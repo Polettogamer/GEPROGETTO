@@ -1,0 +1,118 @@
+/* Stile generale */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Barra del menu */
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.fixed-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fixed-menu ul li {
+    margin: 0 15px;
+}
+
+.fixed-menu ul li a, .fixed-menu ul li button {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.fixed-menu ul li button:hover, .fixed-menu ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Sezioni principali */
+
+
+.parte1 {
+    display: flex; /* Utilizza il layout flexbox */
+    justify-content: space-between; /* Spaziatura tra immagine e testo */
+    align-items: center; /* Allinea verticalmente il contenuto */
+    text-align: left; /* Il testo resta allineato a sinistra */
+    padding: 100px 300px;
+    background: linear-gradient(to right, #e3560a, #2575fc);
+    color: white;
+    font-size: 30px;
+}
+
+.parte1 .contenuto {
+    display: flex; /* Posiziona immagine e testo in orizzontale */
+    gap: 200px; /* Spazio tra immagine e testo */
+}
+
+.parte1 .testo {
+    flex: 2; /* Occupa più spazio per il testo */
+}
+
+.parte1 .immagine {
+    flex: 1; /* Occupa meno spazio per l'immagine */
+}
+
+.parte1 img {
+    max-width: 100%; /* Assicura che l'immagine non superi le dimensioni del contenitore */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+    border-radius: 10px; /* Opzionale: bordi arrotondati per l'immagine */
+}
+
+.parte2 {
+    padding: 50px 300px;
+    background-color:#0ab5dc;
+}
+
+.parte3{
+    padding: 50px 300px;
+    background-color: #ce6912;
+}
+
+.parte4{
+    padding: 50px 300px;
+    background-color: #ce12ce;
+}
+
+.footer{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 100px;
+}
+
+/* Pulsanti */
+.button {
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
