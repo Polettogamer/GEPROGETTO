@@ -18,7 +18,7 @@
     $password = $_POST['password'];
 
     if(!str_ends_with($email, "@iisvittorioveneto.it")) {
-         echo "<script>alert('L\'email non è valida!');</script>";
+        echo "<script>alert('L\'email non è valida!');</script>";
         exit();
     }
     // dobbiamo hashare la password
@@ -41,7 +41,9 @@
 
     $stmt->close();
     $conn->close();
-
+    //PROBLEMA: L'INSERIMENTO NON INSERISCE!!!
+    //fare il redirect
+    //fare che non ci si puo registrrare 2 volte con la stessa mail
 ?>
 
-//PROBLEMA: L'INSERIMENTO NON INSERISCE!!!
+
