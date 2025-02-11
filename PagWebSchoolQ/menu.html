@@ -2,209 +2,11 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard - SchoolQ</title>
+  <title>Home - SchoolQ</title>
+  <link rel="stylesheet" href="CSS/menuCSS.css">
   <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Impostazioni di base */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
-    }
-    
-    /* TOP NAVBAR: centrata e moderna */
-    .top-navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1100;
-      padding: 10px 0;
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 100 auto;
-      display: flex;
-      /*justify-content: space-evenly;*/
-      align-items: center;
-      padding: 0 20px;
-    }
-    .nav-container .logo {
-      display: flex;
-      align-items: center;
-    }
-    .nav-container .logo img {
-      max-height: 50px;
-      margin-right: 1200px;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-links li {
-      margin: 0 15px;
-    }
-    .nav-links li a {
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 8px 15px;
-      border: 2px solid transparent;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-    }
-    .nav-links li a:hover {
-      background-color: #0077ff;
-      color: #fff;
-      border-color: #0077ff;
-    }
-    .button {
-      background-color: #0099ff;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .button:hover {
-      background-color: #0077ff;
-    }
-    .toggle-btn {
-      font-size: 24px;
-      background: none;
-      border: none;
-      color: #0077ff;
-      cursor: pointer;
-      margin-right: 20px;
-    }
-    
-    /* SIDEBAR (MENU A TENDINA) */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -300px; /* inizialmente nascosto */
-      width: 300px;
-      height: 100%; /* occupa tutta l'altezza della pagina */
-      background-color: #0077ff;
-      color: white;
-      padding-top: 70px; /* spazio per la navbar */
-      transition: left 0.3s ease;
-      overflow-y: auto;
-      z-index: 1050;
-    }
-    .sidebar.active {
-      left: 0;
-    }
-    .sidebar h3 {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-    .sidebar ul li {
-      padding: 15px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.3s;
-    }
-    .sidebar ul li:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
-    .sidebar ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-      display: block;
-    }
-    
-    /* MAIN CONTENT: area a destra che occupa tutto lo spazio disponibile */
-    .main-content {
-      margin-top: 70px; /* spazio per la navbar */
-      padding: 20px;
-      transition: margin-left 0.3s ease;
-      margin-left: 20px; /* default quando il sidebar è chiuso */
-    }
-    .main-content.shifted {
-      margin-left: 320px; /* 300px sidebar + 20px margine */
-    }
-    
-    /* STILI PER LE DOMANDE (card complete) */
-    .questions {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .questions h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-      color: #0077ff;
-    }
-    .question-item {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .question-item:hover {
-      transform: scale(1.02);
-    }
-    .question-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .question-title {
-      font-size: 22px;
-      margin: 0;
-    }
-    .question-meta {
-      font-size: 14px;
-      color: #777;
-    }
-    .question-body {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    .question-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-    .question-footer .button {
-      background-color: #0077ff;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-    .question-footer .button:hover {
-      background-color: #005bb5;
-    }
-    .question-stats {
-      font-size: 14px;
-      color: #555;
-    }
-    .question-stats span {
-      margin-right: 15px;
-    }
-  </style>
+  
   <script>
     // Funzione per mostrare/nascondere il sidebar (menu a tendina)
     function toggleSidebar() {
@@ -229,7 +31,7 @@
         <img src="Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="user_dashboard.html">Dashboard</a></li>
+        <li><a href="user_dashboard.html">Home</a></li>
         <li><a href="profile_management.html">Profilo</a></li>
         <li><a href="logout.html" class="button">Logout</a></li>
       </ul>
@@ -240,8 +42,8 @@
   <div id="sidebar" class="sidebar">
     <h3>Materie</h3>
     <ul>
-      <li><a href="materia1.html">Matematica</a></li>
-      <li><a href="materia2.html">Fisica</a></li>
+      <li><a href="Classe1.html">Classe 1</a></li>
+      <li><a href="materia2.html">Classe 1</a></li>
       <li><a href="materia3.html">Chimica</a></li>
       <li><a href="materia4.html">Biologia</a></li>
       <li><a href="materia5.html">Storia</a></li>
@@ -250,7 +52,7 @@
       <li><a href="materia8.html">Inglese</a></li>
     </ul>
   </div>
-  
+
   <!-- MAIN CONTENT: DOMANDE PUBBLICATE RECENTEMENTE -->
   <div id="main-content" class="main-content">
     <div class="questions">
@@ -342,4 +144,44 @@
     </div>
   </div>
 </body>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>Informazioni</h4>
+      <ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="guida.html">Come Funziona</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Legale</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="termini.html">Termini e Condizioni</a></li>
+        <li><a href="regolamento.html">Regolamento</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contatti</h4>
+      <ul>
+        <li><a href="contact.html">Contattaci</a></li>
+        <li><a href="supporto.html">Supporto</a></li>
+      </ul>
+    </div>
+    <div class="footer-section social">
+      <h4>Seguici</h4>
+      <ul>
+        <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/tuoforum" target="_blank">Twitter</a></li>
+        <li><a href="https://instagram.com/tuoforum" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
+    </div>
+  </div>
+</footer>
 </html>
