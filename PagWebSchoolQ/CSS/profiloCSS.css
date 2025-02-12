@@ -1,103 +1,143 @@
-/* Profilo: Container principale */
+/* Container principale del profilo */
 .profile-container {
-    max-width: 900px;
-    margin: 80px auto; /* Spazio in alto per non sovrapporsi alla navbar */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .profile-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #0077ff;
-  }
-  
-  /* Profilo: Card contenente immagine e dettagli */
+  max-width: 800px;
+  margin: 120px auto 60px;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 35px;
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #0077ff;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+/* La card del profilo: layout a due colonne con sfondo bianco, angoli arrotondati e ombra */
+.profile-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Sezione immagine del profilo */
+.profile-image {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  position: relative;
+}
+
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  /*border: 5px solid #0077ff;*/
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Nascondi il file input e definisci una label personalizzata come bottone */
+.profile-image input[type="file"] {
+  display: none;
+}
+
+.custom-file-label {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #0099ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-label:hover {
+  background-color: #0077ff;
+}
+
+/* Sezione dettagli del profilo */
+.profile-details {
+  flex: 2;
+  min-width: 300px;
+}
+
+.profile-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Stili per i gruppi di campi del form */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  font-size: 16px;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: #0077ff;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+/* Bottone di salvataggio */
+.form-group button {
+  background-color: #0099ff;
+  color: #fff;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.form-group button:hover {
+  background-color: #0077ff;
+}
+
+/* Responsive: per schermi più piccoli, la card diventa verticale */
+@media (max-width: 768px) {
   .profile-card {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  /* Sezione immagine del profilo */
-  .profile-image {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-  }
-  
-  .profile-image img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #0077ff;
-    margin-bottom: 10px;
-  }
-  
-  .profile-image input[type="file"] {
-    display: block;
-    margin: 0 auto;
-  }
-  
-  /* Sezione dati utente */
-  .profile-details {
-    flex: 2;
-    min-width: 300px;
-  }
-  
-  .profile-details form {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
+    text-align: center;
+    padding: 30px;
   }
   
-  .profile-details label {
-    font-weight: bold;
-    color: #333;
+  .profile-details {
+    width: 100%;
   }
-  
-  .profile-details input[type="text"],
-  .profile-details textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-  }
-  
-  .profile-details textarea {
-    resize: vertical;
-  }
-  
-  /* Bottone Salva, in linea con lo stile del sito */
-  .profile-details .button {
-    align-self: flex-start;
-    background-color: #0099ff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .profile-details .button:hover {
-    background-color: #0077ff;
-  }
-  
-  /* Responsive: disposizione a colonna per schermi piccoli */
-  @media (max-width: 768px) {
-    .profile-card {
-      flex-direction: column;
-    }
-  }
-  
+}
