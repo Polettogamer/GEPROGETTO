@@ -1,0 +1,103 @@
+/* Profilo: Container principale */
+.profile-container {
+    max-width: 900px;
+    margin: 80px auto; /* Spazio in alto per non sovrapporsi alla navbar */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #0077ff;
+  }
+  
+  /* Profilo: Card contenente immagine e dettagli */
+  .profile-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Sezione immagine del profilo */
+  .profile-image {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  
+  .profile-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #0077ff;
+    margin-bottom: 10px;
+  }
+  
+  .profile-image input[type="file"] {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Sezione dati utente */
+  .profile-details {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .profile-details form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profile-details label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-details input[type="text"],
+  .profile-details textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+  
+  .profile-details textarea {
+    resize: vertical;
+  }
+  
+  /* Bottone Salva, in linea con lo stile del sito */
+  .profile-details .button {
+    align-self: flex-start;
+    background-color: #0099ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .profile-details .button:hover {
+    background-color: #0077ff;
+  }
+  
+  /* Responsive: disposizione a colonna per schermi piccoli */
+  @media (max-width: 768px) {
+    .profile-card {
+      flex-direction: column;
+    }
+  }
+  

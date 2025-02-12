@@ -126,13 +126,80 @@ section ul li {
 }
 
 /* Footer */
+/* Stili generali per il footer */
 .footer {
-    background-color: #111;
-    color: white;
+    background-color: #0077ff; /* Colore di sfondo coerente con la sidebar e altri elementi */
+    color: #fff;               /* Testo in bianco per un buon contrasto */
+    padding: 40px 20px;        /* Spazio interno per dare respiro alle sezioni */
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Contenitore principale del footer */
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;           /* Permette il wrapping su schermi più piccoli */
+    justify-content: space-between; /* Distribuisce uniformemente le sezioni */
+  }
+  
+  /* Stili per ogni sezione del footer */
+  .footer-section {
+    flex: 1;
+    min-width: 200px;          /* Impedisce che le sezioni diventino troppo strette su schermi piccoli */
+    margin-bottom: 20px;
+  }
+  
+  /* Titoli delle sezioni */
+  .footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff; /* Linea sotto il titolo per separare visivamente */
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  /* Lista all'interno di ogni sezione */
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Link all'interno delle liste */
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e0e0e0;
+  }
+  
+  /* Sezione "Seguici" per i social media */
+  .footer-section.social ul {
+    display: flex;
+    gap: 10px; /* Spazio tra le icone/link dei social */
+  }
+  
+  .footer-section.social ul li {
+    margin-bottom: 0;
+  }
+  
+  /* Footer bottom: riga di copyright */
+  .footer-bottom {
+    width: 100%;
     text-align: center;
-    padding: 20px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+    margin-top: 20px;
     font-size: 14px;
-}
+  }
 
 /* Pulsanti globali */
 .button {
