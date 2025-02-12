@@ -29,7 +29,7 @@
                     <div class="login-container-right">
                         
                     <h3 class="h3">Accedi</h3>
-                        <form action="../php/sign_up_back.php" method="post" class="input-container">
+                        <form action="../php/log_in_back.php" method="post" class="input-container">
                             <label for="email">Email</label>
                             <input class="input-text" type="email" id="email" name="email" placeholder="Email Address" required 
                                 autocomplete="email" pattern=".+@iisvittorioveneto\.it" title="Deve essere un'email @iisvittorioveneto.it">
