@@ -10,7 +10,7 @@
         die("Connessione fallita: " . $conn->connect_error);
     }
 
-    $sql = "SELECT d.questionID, c.nome, d.dataPubbl, d.testo, d.nLike, u.nome, u.cognome 
+    $sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome 
             FROM domande d
             JOIN utenti u ON d.userID = u.userID
             JOIN categorie c ON c.IDCategoria = d.categoriaID
@@ -98,24 +98,31 @@
       <h2>Domande Pubblicate Recentemente</h2>
       
       <?php
-      foreach($row = $result->fetch_assoc()){
+      if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()){
+           
         echo '<div class="question-item">';
         echo  '<div class="question-header">';
-        echo    '<h3 class="question-title">' . $row["categoria"] . ' </h3>';
-        echo    '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . '' . $row['cognome'] . 'utente </strong></div>';
-        echo  '</div>'
+        echo '<h3 class="question-title">' . htmlspecialchars($row["categoria"]) . ' </h3>';
+        echo    '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '  </strong></div>';
+        echo  '</div>';
         echo  '<div class="question-body">';
-        echo    '<p>' . nl2br(htmlspecialchars($row["testo"])) . '</p>';
+        echo    '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
         echo  '</div>';
         echo  '<div class="question-footer">';
-        echo    '<a href="conversation8.php?id=' . $row["id"] . '" class="button">Vedi di più</a>';
+        echo '<a href="conversation8.php?id=' . $row["questionID"] . '" class="button">Vedi di più</a>';
         echo    '<div class="question-stats">';
         echo      '<span>Risposte: 4</span>';
         echo      '<span>Likes:'. htmlspecialchars($row["nLike"]) . '</span>';
         echo    '</div>';
         echo  '</div>';
         echo '</div>';
-      }
+      } 
+        
+    } else {
+        echo "<p>Nessuna domanda disponibile.</p>";
+    }
+      
       ?>
     </div>
   </div>
@@ -159,11 +166,5 @@
     </footer>
 </body>
 
-
-
 </html>
 
-<?php
-// Chiudere la connessione dopo l'output HTML
-$conn->close();
-?>
