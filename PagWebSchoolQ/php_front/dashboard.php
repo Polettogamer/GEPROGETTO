@@ -1,5 +1,28 @@
 <?php
-    $categoria = 'italiano';
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "schoolq";
+    
+    // Creazione connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT d.questionID, c.nome, d.dataPubbl, d.testo, d.nLike, u.nome, u.cognome 
+            FROM domande d
+            JOIN utenti u ON d.userID = u.userID
+            JOIN categorie c ON c.IDCategoria = d.categoriaID
+            ORDER BY d.dataPubbl DESC";
+
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        die("Errore nella query: " . $conn->error);
+    }
+
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +55,7 @@
     <div class="nav-container">
       <div class="logo">
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
-        <img src="Immagini/mondo01.png" alt="SchoolQ Logo">
+        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
         <li><a href="user_dashboard.html">Home</a></li>
@@ -74,24 +97,26 @@
     <div class="questions">
       <h2>Domande Pubblicate Recentemente</h2>
       
-      
-      <div class="question-item">
-        <div class="question-header">
-          <h3 class="question-title"><?php echo $categoria ?></h3>
-          <div class="question-meta">Pubblicato alle 18:30 - da <strong>FrancescoVerdi</strong></div>
-        </div>
-        <div class="question-body">
-          Domanda: Quali sono le principali caratteristiche geografiche dellAfrica e quali sono le sfide ambientali che affronta?
-        </div>
-        <div class="question-footer">
-          <a href="conversation8.html" class="button">Vedi di più</a>
-          <div class="question-stats">
-            <span>Risposte: 4</span>
-            <span>Likes: 7</span>
-          </div>
-        </div>
-      </div>
-      
+      <?php
+      foreach($row = $result->fetch_assoc()){
+        echo '<div class="question-item">';
+        echo  '<div class="question-header">';
+        echo    '<h3 class="question-title">' . $row["categoria"] . ' </h3>';
+        echo    '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . '' . $row['cognome'] . 'utente </strong></div>';
+        echo  '</div>'
+        echo  '<div class="question-body">';
+        echo    '<p>' . nl2br(htmlspecialchars($row["testo"])) . '</p>';
+        echo  '</div>';
+        echo  '<div class="question-footer">';
+        echo    '<a href="conversation8.php?id=' . $row["id"] . '" class="button">Vedi di più</a>';
+        echo    '<div class="question-stats">';
+        echo      '<span>Risposte: 4</span>';
+        echo      '<span>Likes:'. htmlspecialchars($row["nLike"]) . '</span>';
+        echo    '</div>';
+        echo  '</div>';
+        echo '</div>';
+      }
+      ?>
     </div>
   </div>
       <footer class="footer">
@@ -137,3 +162,8 @@
 
 
 </html>
+
+<?php
+// Chiudere la connessione dopo l'output HTML
+$conn->close();
+?>
