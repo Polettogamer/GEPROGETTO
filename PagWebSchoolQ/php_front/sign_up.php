@@ -69,6 +69,7 @@ if (isset($_GET['error'])) {
                             
                             <button type="submit" id="link-continue" class="icon-flecha">REGISTRATI</button>
                         </form>
+                        <p>Hai già una mail?  <a href="log_in.php" >Accedi </a></p>
                         
                     </div>
         
