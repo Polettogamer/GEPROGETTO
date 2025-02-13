@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Profilo - SchoolQ</title>
   <!-- Include il CSS dedicato al profilo e il CSS del menu se necessario -->
-  <link rel="stylesheet" href="CSS/menuCSS.css">
-  <link rel="stylesheet" href="CSS/profileCSS.css">
+  <link rel="stylesheet" href="../CSS/menuCSS.css">
+  <link rel="stylesheet" href="../CSS/profileCSS.css">
   <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
@@ -18,9 +18,9 @@
         <img src="Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="user_dashboard.html">Home</a></li>
-        <li><a href="profilo.html" class="active">Profilo</a></li>
-        <li><a href="logout.html" class="button">Logout</a></li>
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="profilo.php" class="active">Profilo</a></li>
+        <li><a href="logout.php" class="button">Logout</a></li>
       </ul>
     </div>
   </header>

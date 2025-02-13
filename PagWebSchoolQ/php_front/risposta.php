@@ -1,32 +1,43 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
+    $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// 1. Creazione connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "schoolq";
+    
+    // Creazione connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+    
+    $conn->set_charset("utf8mb4");
 
-$conn->set_charset("utf8mb4");
+    // Prepared statement per le risposte
+    $stmt = $conn->prepare("SELECT r.*, u.nome, u.cognome FROM risposte r
+                        JOIN utenti u ON r.userID = u.userID
+                        WHERE r.questionID = ?");
+    $stmt->bind_param("i", $iddomanda);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-// 2. Query per ottenere le domande
-$sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome
-        FROM domande d
-        JOIN utenti u ON d.userID = u.userID
-        JOIN categorie c ON c.IDCategoria = d.categoriaID
-        ORDER BY d.dataPubbl DESC";
+    // Prepared statement per la domanda
+    $stmt_domanda = $conn->prepare("SELECT d.*, u.nome, u.cognome, c.nome AS nomecat FROM domande d 
+                                    JOIN utenti u ON d.userID = u.userID
+                                    JOIN categorie c ON c.IDCategoria = d.categoriaID
+                                    WHERE QuestionID = ?");
+    $stmt_domanda->bind_param("i", $iddomanda);
+    $stmt_domanda->execute();
+    $domanda = $stmt_domanda->get_result();
 
-$result = $conn->query($sql);
+    if (!$result) {
+        die("Errore nella query: " . $conn->error);
+    }
 
-if (!$result) {
-    die("Errore nella query: " . $conn->error);
-}
+    $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -37,7 +48,7 @@ if (!$result) {
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   
   <script>
-    // Funzione per mostrare/nascondere la sidebar (menu a tendina)
+    // Funzione per mostrare/nascondere il sidebar (menu a tendina)
     function toggleSidebar() {
       var sidebar = document.getElementById("sidebar");
       var mainContent = document.getElementById("main-content");
@@ -95,60 +106,58 @@ if (!$result) {
       <li><a> ... </a></li>
     </ul>
   </div>
-
-  <!-- MAIN CONTENT: DOMANDE PUBBLICATE RECENTEMENTE -->
+  
   <div id="main-content" class="main-content">
-    <div class="questions">
-      <h2>Domande Pubblicate Recentemente</h2>
-      
+    <div id="domanda" class="domanda">
       <?php
-      if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-              echo '<div class="question-item">';
-              echo   '<div class="question-header">';
-              echo     '<h3 class="question-title">' . htmlspecialchars($row["categoria"] ?? "Categoria non disponibile") . '</h3>';
-              echo     '<div class="question-meta">Pubblicato alle ' . ($row["dataPubbl"] ?? "Data non disponibile") . ' - da <strong>' 
-                       . htmlspecialchars(($row['nome'] ?? "Nome non disponibile") . ' ' . ($row['cognome'] ?? "Cognome non disponibile")) . '</strong></div>';
-              echo   '</div>';
-
-              echo   '<div class="question-body">';
-              echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"] ?? "")) . '</p>';
-              echo   '</div>';
-
-              echo   '<div class="question-footer">';
-              // Link alla pagina delle risposte
-              echo     '<a href="risposta.php?id=' . $row["questionID"] . '" class="button">Vedi di più</a>';
-
-              // Query per contare le risposte
-              $questionID = intval($row["questionID"]);
-              $countQuery = "SELECT COUNT(*) as count FROM risposte WHERE QuestionID = $questionID";
-              $countResult = $conn->query($countQuery);
-
-              // Stampa delle statistiche
-              echo     '<div class="question-stats">';
-              if ($countResult && $countResult->num_rows > 0) {
-                  $num = $countResult->fetch_assoc();
-                  echo '<span>Risposte: ' . ($num["count"] ?? 0) . '</span>';
-              } else {
-                  echo '<span>Risposte: 0</span>';
-              }
-              echo '<span>Likes: ' . htmlspecialchars($row["nLike"] ?? "0") . '</span>';
-              echo     '</div>';
-
-              echo   '</div>'; // .question-footer
-              echo '</div>';   // .question-item
-          }
+      if ($domanda->num_rows > 0) {
+          $row = $domanda->fetch_assoc();
+          echo '<div class="question-item">';
+          echo   '<div class="question-header">';
+          echo     '<h3 class="question-title">' . htmlspecialchars($row["nomecat"]) . '</h3>';
+          echo     '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '</strong></div>';
+          echo   '</div>';
+          echo   '<div class="question-body">';
+          echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
+          echo   '</div>';
+          echo   '<div class="question-footer">';
+          echo     '<div class="question-stats">';
+          echo       '<span>Risposte: 4</span>';
+          echo       '<span>Likes: ' . htmlspecialchars($row["nLike"]) . '</span>';
+          echo     '</div>';
+          echo   '</div>';
+          echo '</div>';
       } else {
           echo "<p>Nessuna domanda disponibile.</p>";
       }
-
-      // Chiudi la connessione solo alla fine
-      $conn->close();
+      ?>
+    </div>
+    <div class="risposte">
+      <?php
+      if ($result->num_rows > 0) {
+          echo '<div class="question-item">';
+          while($row = $result->fetch_assoc()){
+              echo '<div class="question-header">';
+              echo   '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '</strong></div>';
+              echo '</div>';
+              echo '<div class="question-body">';
+              echo   '<p>' . nl2br(htmlspecialchars($row["testoRisposta"])) . '</p>';
+              echo '</div>';
+              echo '<div class="question-footer">';
+              echo   '<div class="question-stats">';
+              echo     '<span>Likes: ' . htmlspecialchars($row["nLike"]) . '</span>';
+              echo   '</div>';
+              echo '</div>';
+              echo '<hr>';
+          }
+          echo '</div>';
+      } else {
+          echo "<p>Nessuna risposta disponibile.</p>";
+      }
       ?>
     </div>
   </div>
   
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
