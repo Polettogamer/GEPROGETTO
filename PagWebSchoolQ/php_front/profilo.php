@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Profilo - SchoolQ</title>
-  <!-- Include il CSS dedicato al profilo e il CSS del menu se necessario -->
+  <!-- Include il CSS del menu e quello specifico per il profilo -->
   <link rel="stylesheet" href="../CSS/menuCSS.css">
-  <link rel="stylesheet" href="../CSS/profileCSS.css">
-  <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
+  <link rel="stylesheet" href="../CSS/profiloCSS.css">
+  <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
   <!-- TOP NAVBAR -->
   <header class="top-navbar">
     <div class="nav-container">
       <div class="logo">
-        <img src="Immagini/mondo01.png" alt="SchoolQ Logo">
+        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php" class="active">Profilo</a></li>
-        <li><a href="logout.php" class="button">Logout</a></li>
+        <li><a href="menu.html">Home</a></li>
+        <li><a href="profilo.html" class="active">Profilo</a></li>
+        <li><a href="logout.html" class="button">Logout</a></li>
       </ul>
     </div>
   </header>
@@ -28,23 +27,51 @@
   <!-- MAIN CONTENT: Gestione Profilo -->
   <div id="main-content" class="main-content">
     <div class="profile-container">
-      <h2>Gestisci il tuo Profilo</h2>
+      <h2>Profilo utente</h2>
       <div class="profile-card">
         <!-- Sezione immagine del profilo -->
         <div class="profile-image">
-          <img src="Immagini/profilo4.png" alt="Immagine Profilo" id="profilePic">
+          <img src="../Immagini/profilo5.png" alt="Immagine Profilo" id="profilePic">
+          <!-- La label agisce come bottone per selezionare un nuovo file -->
+          <label for="profileImageInput" class="custom-file-label">Cambia Immagine</label>
           <input type="file" id="profileImageInput" accept="image/*">
         </div>
         <!-- Sezione dati utente -->
         <div class="profile-details">
           <form id="profileForm" action="update_profile.php" method="post" enctype="multipart/form-data">
-            <label for="username">Nome Utente</label>
-            <input type="text" id="username" name="username" value="MarioRossi" required>
-            
-            <label for="bio">Descrizione</label>
-            <textarea id="bio" name="bio" rows="4" placeholder="Scrivi qualcosa di te...">Sono un appassionato di matematica e fisica!</textarea>
-            
-            <button type="submit" class="button">Salva Modifiche</button>
+            <!-- Campo: Nome Utente (sola lettura) -->
+            <div class="form-group">
+              <label for="username">Nome utente</label>
+              <input type="text" id="username" name="username" value="Mario Rossi" readonly>
+            </div>
+            <!-- Campo: Classe -->
+            <div class="form-group">
+              <label for="class">Classe</label>
+              <input type="text" id="class" name="class" placeholder="Es. 1A, 2B..." required>
+            </div>
+            <!-- Campo: Indirizzo Scolastico come scelta multipla -->
+            <div class="form-group">
+              <label for="schoolAddress">Indirizzo scolastico</label>
+              <select id="schoolAddress" name="schoolAddress" required>
+                <option value="Nessuno">Nessuno</option>
+                <option value="Informatica">Informatica</option>
+                <option value="Elettrotecnica">Elettrotecnica</option>
+              </select>
+            </div>
+            <!-- Campo: Email (sola lettura) -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" value="mario.rossi@iisvittorioveneto.it" readonly>
+            </div>
+            <!-- Campo: Descrizione (bio) -->
+            <div class="form-group">
+              <label for="bio">Descrizione</label>
+              <textarea id="bio" name="bio" rows="4" placeholder="Scrivi qualcosa di te..."></textarea>
+            </div>
+            <!-- Bottone per salvare le modifiche -->
+            <div class="form-group">
+              <button type="submit" class="button">Salva modifiche</button>
+            </div>
           </form>
         </div>
       </div>

@@ -82,27 +82,28 @@
   <div id="sidebar" class="sidebar">
     <h3>Materie</h3>
     <ul>
-      <li><a href="categoria.php?categoria=italiano">Italiano</a></li>
-      <li><a href="categoria.php?categoria=storia">Storia</a></li>
-      <li><a href="categoria.php?categoria=geografia">Geografia</a></li>
-      <li><a href="categoria.php?categoria=diritto ed economia">Diritto ed economia</a></li>
-      <li><a href="categoria.php?categoria=matematica">Matematica</a></li>
-      <li><a href="categoria.php?categoria=fisica">Fisica</a></li>
-      <li><a href="categoria.php?categoria=chimica">Chimica</a></li>
-      <li><a href="categoria.php?categoria=scenze della terra">Scienze della terra</a></li>
-      <li><a href="categoria.php?categoria=tecnologie informatiche">Tecnologie Informatiche</a></li>
-      <li><a href="categoria.php?categoria=trg">TRG</a></li>
-      <li><a href="categoria.php?categoria=educazione fisica">Educazione fisica</a></li>
-      <li><a href="categoria.php?categoria=scienze e tecnologie applicate">Scienze e tecnologie applicate</a></li>
+      <li><a href="categoria.php?id=1">Italiano</a></li>
+      <li><a href="categoria.php?id=2">Storia</a></li>
+      <li><a href="categoria.php?id=3">Geografia</a></li>
+      <li><a href="categoria.php?id=4">Diritto ed economia</a></li>
+      <li><a href="categoria.php?id=5">Matematica</a></li>
+      <li><a href="categoria.php?id=6">Fisica</a></li>
+      <li><a href="categoria.php?id=7">Chimica</a></li>
+      <li><a href="categoria.php?id=8">Scienze della terra</a></li>
+      <li><a href="categoria.php?id=9">Tecnologie Informatiche</a></li>
+      <li><a href="categoria.php?id=10">TRG</a></li>
+      <li><a href="categoria.php?id=11">Educazione fisica</a></li>
+      <li><a href="categoria.php?id=12">Scienze e tecnologie applicate</a></li>
       <li><a><b>Indirizzo Informatica:</b></a></li>
-      <li><a href="categoria.php?categoria=informatica"> Informatica</a></li>
-      <li><a href="categoria.php?categoria=sistemi e reti"> Sistemi e reti</a></li>
-      <li><a href="categoria.php?categoria=tpsit"> TPSIT</a></li>
-      <li><a href="categoria.php?categoria=gepro"> GEPRO</a></li>
+      <li><a href="categoria.php?id=13"> Informatica</a></li>
+      <li><a href="categoria.php?id=14"> Sistemi e reti</a></li>
+      <li><a href="categoria.php?id=15"> TPSIT</a></li>
+      <li><a href="categoria.php?id=16"> Telecomunicazioni</a></li>
+      <li><a href="categoria.php?id=17"> GEPRO</a></li>
       <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
-      <li><a href="categoria.php?categoria=elettrotecnica"> Elettrotecnica</a></li>
-      <li><a href="categoria.php?categoria=sistemi"> Sistemi</a></li>
-      <li><a href="categoria.php?categoria=tpsee"> TPSEE</a></li>
+      <li><a href="categoria.php?id=18"> Elettrotecnica</a></li>
+      <li><a href="categoria.php?id=19"> Sistemi</a></li>
+      <li><a href="categoria.php?id=20"> TPSEE</a></li>
       <li><a> ... </a></li>
     </ul>
   </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 13, 2025 alle 17:50
+-- Creato il: Feb 14, 2025 alle 08:55
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -49,7 +49,15 @@ INSERT INTO `categorie` (`IDCategoria`, `nome`, `descrizione`) VALUES
 (9, 'Tecnologie informatiche', 'Tutte le domande facenti parte la materia Tecnologie Informatiche'),
 (10, 'TRG', 'Tutte le domande inerenti alle tecnologie e tecniche di rappresentazione grafica'),
 (11, 'Educazione fisica', 'domande dedicate allo sport e alle discipline motorie'),
-(12, 'Scienze e tecnologie applicate', 'domande dedicate alle scienze e tecnologie applicate');
+(12, 'Scienze e tecnologie applicate', 'domande dedicate alle scienze e tecnologie applicate'),
+(13, 'Informatica', 'Tutte le domande relative al programma di Informatica del triennio'),
+(14, 'Sistemi e Reti', 'Tutte le domande relative sistemi e reti del programma del triennio'),
+(15, 'TPSIT', 'Domande inerenti alle tecnologie e progettazione di sistemi informatici e delle telecomunicazioni'),
+(16, 'Telecomunicazioni', 'Tutte le domande relative la materia Telecomunicazioni'),
+(17, 'GEPRO', 'Tutte le domande relative la Gestione di Progetto, organizzazione e impresa'),
+(18, 'Elettrotecnica', 'Tutte le domande riguardanti l\'elettronica e l\'elettrotecnica'),
+(19, 'Sistemi', 'Tutte le domande relative sistemi triennio di elettrotecnica'),
+(20, 'TPSEE', 'Tutte le domande relative TPSEE');
 
 -- --------------------------------------------------------
 
@@ -165,7 +173,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `IDCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IDCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT per la tabella `domande`
