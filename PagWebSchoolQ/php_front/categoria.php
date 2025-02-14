@@ -71,7 +71,7 @@
       <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
         <li><a href="profilo.php">Profilo</a></li>
-        <li><a class="button">Logout</a></li>
+        <li><a href="../index.html" class="button">Logout</a></li>
       </ul>
     </div>
   </header>

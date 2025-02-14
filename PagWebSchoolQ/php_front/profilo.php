@@ -17,9 +17,8 @@
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="menu.html">Home</a></li>
-        <li><a href="profilo.html" class="active">Profilo</a></li>
-        <li><a href="logout.html" class="button">Logout</a></li>
+        <li><a href="./dashboard.php">Home</a></li>
+        <li><a href="../index.html" class="button">Logout</a></li>
       </ul>
     </div>
   </header>
