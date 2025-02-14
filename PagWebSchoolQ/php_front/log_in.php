@@ -39,6 +39,7 @@
                                 title="Deve contenere almeno 8 caratteri, una lettera maiuscola, una minuscola e un numero">
                                 <button type="submit" id="link-continue" class="icon-flecha">ACCEDI</button>
                         </form>
+                        <p>Sei senza account?  <a href="sign_up.php" >Registrati </a></p>
                     </div>
                 </div>
         </main>

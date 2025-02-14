@@ -1,31 +1,40 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
+    $categoria = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// 1. Creazione connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "schoolq";
+    
+    // Creazione connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+    
+    $conn->set_charset("utf8mb4");
 
-$conn->set_charset("utf8mb4");
+   
+    $stmt = $conn->prepare("SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome, c.descrizione
+                            FROM domande d
+                            JOIN utenti u ON d.userID = u.userID
+                            JOIN categorie c ON c.IDCategoria = d.categoriaID
+                            WHERE categoriaID = ?
+                            ORDER BY d.dataPubbl DESC");
+    $stmt->bind_param("i", $categoria);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-// 2. Query per ottenere le domande
-$sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome
-        FROM domande d
-        JOIN utenti u ON d.userID = u.userID
-        JOIN categorie c ON c.IDCategoria = d.categoriaID
-        ORDER BY d.dataPubbl DESC";
+   
+    
+    if (!$result) {
+        die("Errore nella query: " . $conn->error);
+    }
 
-$result = $conn->query($sql);
-
-if (!$result) {
-    die("Errore nella query: " . $conn->error);
-}
+   
 ?>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -37,7 +46,7 @@ if (!$result) {
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   
   <script>
-    // Funzione per mostrare/nascondere la sidebar (menu a tendina)
+    // Funzione per mostrare/nascondere il sidebar (menu a tendina)
     function toggleSidebar() {
       var sidebar = document.getElementById("sidebar");
       var mainContent = document.getElementById("main-content");
@@ -96,11 +105,20 @@ if (!$result) {
       <li><a> ... </a></li>
     </ul>
   </div>
-
-  <!-- MAIN CONTENT: DOMANDE PUBBLICATE RECENTEMENTE -->
+  
   <div id="main-content" class="main-content">
     <div class="questions">
-      <h2>Domande Pubblicate Recentemente</h2>
+      <h2><?php  
+        // TITOLO CON DESCRIZIONE DELLA CATEGORIA
+        $stmt = $conn->prepare("SELECT *
+                                FROM  categorie 
+                                WHERE IDcategoria = ?");
+        $stmt->bind_param("i", $categoria);
+        $stmt->execute();
+        $titulo = $stmt->get_result();
+        $arr = $titulo-> fetch_assoc();
+        echo $arr['nome'] . " - " . $arr['descrizione'];
+        ?></h2>
       
       <?php
       if ($result->num_rows > 0) {
@@ -122,8 +140,11 @@ if (!$result) {
 
               // Query per contare le risposte
               $questionID = intval($row["questionID"]);
-              $countQuery = "SELECT COUNT(*) as count FROM risposte WHERE QuestionID = $questionID";
-              $countResult = $conn->query($countQuery);
+              $countStmt = $conn->prepare("SELECT COUNT(*) as count FROM risposte WHERE QuestionID = ?");
+              $countStmt->bind_param("i", $questionID);
+              $countStmt->execute();
+              $countResult = $countStmt->get_result();
+            
 
               // Stampa delle statistiche
               echo     '<div class="question-stats">';
@@ -149,7 +170,6 @@ if (!$result) {
     </div>
   </div>
   
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
