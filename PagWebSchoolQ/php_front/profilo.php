@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Profilo - SchoolQ</title>
-<<<<<<< HEAD:PagWebSchoolQ/profilo.html
   <!-- Include il CSS del menu e quello specifico per il profilo -->
-  <link rel="stylesheet" href="CSS/menuCSS.css">
-  <link rel="stylesheet" href="CSS/profiloCSS.css">
-=======
-  <!-- Include il CSS dedicato al profilo e il CSS del menu se necessario -->
   <link rel="stylesheet" href="../CSS/menuCSS.css">
-  <link rel="stylesheet" href="../CSS/profileCSS.css">
->>>>>>> main:PagWebSchoolQ/php_front/profilo.php
-  <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
+  <link rel="stylesheet" href="../CSS/profiloCSS.css">
+  <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -20,18 +14,12 @@
   <header class="top-navbar">
     <div class="nav-container">
       <div class="logo">
-        <img src="Immagini/mondo01.png" alt="SchoolQ Logo">
+        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-<<<<<<< HEAD:PagWebSchoolQ/profilo.html
         <li><a href="menu.html">Home</a></li>
         <li><a href="profilo.html" class="active">Profilo</a></li>
         <li><a href="logout.html" class="button">Logout</a></li>
-=======
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php" class="active">Profilo</a></li>
-        <li><a href="logout.php" class="button">Logout</a></li>
->>>>>>> main:PagWebSchoolQ/php_front/profilo.php
       </ul>
     </div>
   </header>
@@ -43,7 +31,7 @@
       <div class="profile-card">
         <!-- Sezione immagine del profilo -->
         <div class="profile-image">
-          <img src="Immagini/profilo5.png" alt="Immagine Profilo" id="profilePic">
+          <img src="../Immagini/profilo5.png" alt="Immagine Profilo" id="profilePic">
           <!-- La label agisce come bottone per selezionare un nuovo file -->
           <label for="profileImageInput" class="custom-file-label">Cambia Immagine</label>
           <input type="file" id="profileImageInput" accept="image/*">
