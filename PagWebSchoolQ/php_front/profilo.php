@@ -70,7 +70,7 @@
             </div>
             <!-- Bottone per salvare le modifiche -->
             <div class="form-group">
-              <button type="submit" class="button">Salva modifiche</button>
+              <button type="submit" class="button" disabled>Salva modifiche</button>
             </div>
           </form>
         </div>
