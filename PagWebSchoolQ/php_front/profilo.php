@@ -1,3 +1,6 @@
+<?php
+$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -17,9 +20,14 @@
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
+<<<<<<< Updated upstream
         <li><a href="menu.html">Home</a></li>
         <li><a href="profilo.html" class="active">Profilo</a></li>
         <li><a href="logout.html" class="button">Logout</a></li>
+=======
+        <li><a href="./dashboard.php?userID=<?php$id?>">Home</a></li>
+        <li><a href="../index.html" class="button">Logout</a></li>
+>>>>>>> Stashed changes
       </ul>
     </div>
   </header>
