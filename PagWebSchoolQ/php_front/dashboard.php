@@ -4,40 +4,34 @@ $username = "root";
 $password = "";
 $dbname = "schoolq";
 
-// 1. Creazione connessione
+// Creazione connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
-
 $conn->set_charset("utf8mb4");
 
-// 2. Query per ottenere le domande
+// Query per ottenere le domande
 $sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome
         FROM domande d
         JOIN utenti u ON d.userID = u.userID
         JOIN categorie c ON c.IDCategoria = d.categoriaID
         ORDER BY d.dataPubbl DESC";
-
 $result = $conn->query($sql);
-
 if (!$result) {
     die("Errore nella query: " . $conn->error);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <title>Home - SchoolQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/menuCSS.css">
   <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
   <script>
-    // Funzione per mostrare/nascondere la sidebar (menu a tendina)
     function toggleSidebar() {
       var sidebar = document.getElementById("sidebar");
       var mainContent = document.getElementById("main-content");
@@ -55,15 +49,22 @@ if (!$result) {
   <!-- TOP NAVBAR -->
   <header class="top-navbar">
     <div class="nav-container">
-      <div class="logo">
+      <div class="left-group">
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
-        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
+        <div class="logo">
+          <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
+        </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a class="button">Logout</a></li>
-      </ul>
+      <div class="right-group">
+        <ul class="nav-links">
+          <li><a href="dashboard.php">Home</a></li>
+          <li><a href="profilo.php">Profilo</a></li>
+          <li><a href="logout.php" class="button">Logout</a></li>
+        </ul>
+        <div class="new-question-container">
+          <a href="nuova_domanda.php" class="button new-question-btn">Nuova Domanda</a>
+        </div>
+      </div>
     </div>
   </header>
   
@@ -84,49 +85,41 @@ if (!$result) {
       <li><a href="categoria.php?id=11">Educazione fisica</a></li>
       <li><a href="categoria.php?id=12">Scienze e tecnologie applicate</a></li>
       <li><a><b>Indirizzo Informatica:</b></a></li>
-      <li><a href="categoria.php?id=13"> Informatica</a></li>
-      <li><a href="categoria.php?id=14"> Sistemi e reti</a></li>
-      <li><a href="categoria.php?id=15"> TPSIT</a></li>
-      <li><a href="categoria.php?id=16"> Telecomunicazioni</a></li>
-      <li><a href="categoria.php?id=17"> GEPRO</a></li>
+      <li><a href="categoria.php?id=13">Informatica</a></li>
+      <li><a href="categoria.php?id=14">Sistemi e reti</a></li>
+      <li><a href="categoria.php?id=15">TPSIT</a></li>
+      <li><a href="categoria.php?id=16">Telecomunicazioni</a></li>
+      <li><a href="categoria.php?id=17">GEPRO</a></li>
       <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
-      <li><a href="categoria.php?id=18"> Elettrotecnica</a></li>
-      <li><a href="categoria.php?id=19"> Sistemi</a></li>
-      <li><a href="categoria.php?id=20"> TPSEE</a></li>
+      <li><a href="categoria.php?id=18">Elettrotecnica</a></li>
+      <li><a href="categoria.php?id=19">Sistemi</a></li>
+      <li><a href="categoria.php?id=20">TPSEE</a></li>
       <li><a> ... </a></li>
     </ul>
   </div>
-
+  
   <!-- MAIN CONTENT: DOMANDE PUBBLICATE RECENTEMENTE -->
   <div id="main-content" class="main-content">
     <div class="questions">
       <h2>Domande Pubblicate Recentemente</h2>
-      
       <?php
       if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
+          while ($row = $result->fetch_assoc()) {
               echo '<div class="question-item">';
               echo   '<div class="question-header">';
               echo     '<h3 class="question-title">' . htmlspecialchars($row["categoria"] ?? "Categoria non disponibile") . '</h3>';
               echo     '<div class="question-meta">Pubblicato alle ' . ($row["dataPubbl"] ?? "Data non disponibile") . ' - da <strong>' 
                        . htmlspecialchars(($row['nome'] ?? "Nome non disponibile") . ' ' . ($row['cognome'] ?? "Cognome non disponibile")) . '</strong></div>';
               echo   '</div>';
-
               echo   '<div class="question-body">';
               echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"] ?? "")) . '</p>';
               echo   '</div>';
-
               echo   '<div class="question-footer">';
-              // Link alla pagina delle risposte
-              echo     '<a href="risposta.php?id=' . $row["questionID"] . '" class="button">Vedi di più</a>';
-
-              // Query per contare le risposte
+              echo     '<a href="risposte.php?id=' . $row["questionID"] . '" class="button">Vedi di più</a>';
+              echo     '<div class="question-stats">';
               $questionID = intval($row["questionID"]);
               $countQuery = "SELECT COUNT(*) as count FROM risposte WHERE QuestionID = $questionID";
               $countResult = $conn->query($countQuery);
-
-              // Stampa delle statistiche
-              echo     '<div class="question-stats">';
               if ($countResult && $countResult->num_rows > 0) {
                   $num = $countResult->fetch_assoc();
                   echo '<span>Risposte: ' . ($num["count"] ?? 0) . '</span>';
@@ -135,16 +128,12 @@ if (!$result) {
               }
               echo '<span>Likes: ' . htmlspecialchars($row["nLike"] ?? "0") . '</span>';
               echo     '</div>';
-
-              echo   '</div>'; // .question-footer
-              echo '</div>';   // .question-item
+              echo   '</div>';
+              echo '</div>';
           }
       } else {
           echo "<p>Nessuna domanda disponibile.</p>";
       }
-
-      // Chiudi la connessione solo alla fine
-      $conn->close();
       ?>
     </div>
   </div>
