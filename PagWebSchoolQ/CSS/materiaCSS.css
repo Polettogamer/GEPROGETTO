@@ -1,0 +1,144 @@
+/* Stili specifici per la pagina della materia */
+
+.subject-content {
+    margin-top: 100px;
+    padding: 20px;
+  }
+  
+  /* Casella di ricerca */
+  .search-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .search-container input[type="text"] {
+    width: 50%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-container input[type="text"]:focus {
+    border-color: #0077ff;
+  }
+  
+  /* Lista delle discussioni */
+  .discussions {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .discussions h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #0077ff;
+  }
+  
+  /* Singola discussione */
+  .discussion-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .discussion-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .discussion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .discussion-title {
+    font-size: 22px;
+    margin: 0;
+    color: #333;
+  }
+  
+  .discussion-meta {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .discussion-body p {
+    font-size: 16px;
+    margin: 15px 0;
+    color: #555;
+  }
+  
+  .discussion-footer {
+    text-align: right;
+  }
+  
+  /* Pulsante "+" flottante */
+  .plus-icon {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #0099ff;
+    color: #fff;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    z-index: 1100;
+    transition: background-color 0.3s ease;
+  }
+  
+  .plus-icon:hover {
+    background-color: #0077ff;
+  }
+  
+  /* Menu che appare al passaggio del mouse sul pulsante "+" */
+  .plus-menu {
+    display: none;
+    position: absolute;
+    top: 60px;  /* Posizionato appena sotto il pulsante */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    z-index: 1200;
+    width: 220px;
+  }
+  
+  .plus-menu ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .plus-menu ul li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+  }
+  
+  .plus-menu ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .plus-menu ul li a {
+    text-decoration: none;
+    color: #0077ff;
+    font-weight: 600;
+  }
+  
+  .plus-menu ul li:hover {
+    background-color: #f0f8ff;
+  }
+  
