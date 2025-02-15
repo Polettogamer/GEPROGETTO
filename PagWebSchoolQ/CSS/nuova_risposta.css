@@ -1,0 +1,289 @@
+/* Impostazioni di base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  /* TOP NAVBAR: centrata e moderna */
+  .top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1100;
+    padding: 10px 0;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .nav-container .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-container .logo img {
+    max-height: 50px;
+    margin-right: 20px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    background-color: #0077ff;
+    color: #fff;
+    border-color: #0077ff;
+  }
+  
+  .button {
+    background-color: #0099ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0077ff;
+  }
+  
+  .toggle-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #0077ff;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
+  /* SIDEBAR (MENU A TENDINA) */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* inizialmente nascosto */
+    width: 300px;
+    height: 100%;
+    background-color: #0077ff;
+    color: white;
+    padding-top: 70px; /* spazio per la navbar */
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 1050;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .sidebar h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .sidebar ul li:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+  }
+  
+  /* MAIN CONTENT: area principale della pagina */
+  .main-content {
+    margin-top: 70px; /* spazio per la navbar */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 20px; /* default quando il sidebar è chiuso */
+  }
+  
+  .main-content.shifted {
+    margin-left: 320px; /* 300px sidebar + 20px margine */
+  }
+  
+  /* STILI SPECIFICI PER LA PAGINA NUOVA_RISPOSTA */
+  .main-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #0077ff;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  /* Bottone per inviare la risposta */
+  .main-content button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0077ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .main-content button[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+  
+  .button {
+    background-color: #0077ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: normal;  /* Cambiato da bold a normal */
+    font-family: 'Roboto', sans-serif; /* Assicura che il font sia lo stesso */
+    font-size: 16px; /* Imposta la stessa dimensione */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #005bb5;
+    }
+
+  /* Messaggi di feedback */
+  .feedback {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* FOOTER */
+  .footer {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e0e0e0;
+  }
+  
+  .footer-section.social ul {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-section.social ul li {
+    margin-bottom: 0;
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  

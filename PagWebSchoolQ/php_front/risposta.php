@@ -1,6 +1,6 @@
 <?php
     $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
+  
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -120,7 +120,7 @@
           echo   '</div>';
           echo   '<div class="question-body">';
           echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
-          echo     '<a href="risposta.php?id=' . $iddomanda . '" class="response-button">Rispondi</a>';
+          echo     '<a href="nuova_risposta.php?id=' . $iddomanda . '" class="response-button">Rispondi</a>';
           echo   '</div>';
           echo   '<div class="question-footer">';
           echo     '<div class="question-stats">';
