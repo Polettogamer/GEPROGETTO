@@ -218,6 +218,20 @@
       background-color: #0056b3; /* Colore più scuro quando ci passi sopra col mouse */
       color: white; /* Colore del testo bianco quando ci passi sopra */
     }
+
+    .separator {
+      border: 0;
+      height: 2px;
+      background: #ddd;
+      margin: 20px 0;
+  }
+  
+  .response-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+  }  
     
     /* Stili generali per il footer */
 .footer {

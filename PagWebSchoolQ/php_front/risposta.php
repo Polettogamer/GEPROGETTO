@@ -129,6 +129,8 @@
           echo     '</div>';
           echo   '</div>';
           echo '</div>';
+          echo '<hr class="separator">';
+          echo '<h3 class="response-title">Risposte:</h3>';
       } else {
           echo "<p>Nessuna domanda disponibile.</p>";
       }
