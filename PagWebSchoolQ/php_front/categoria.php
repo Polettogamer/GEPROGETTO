@@ -32,7 +32,7 @@
         die("Errore nella query: " . $conn->error);
     }
 
-    $id = isset($_GET['userID']);
+
 ?>
 
 
@@ -69,15 +69,9 @@
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-<<<<<<< Updated upstream
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a class="button">Logout</a></li>
-=======
-        <li><a href="dashboard.php?userID=<?php$id?>">Home</a></li>
-        <li><a href="profilo.php?userID=<?php$id?>">Profilo</a></li>
+        <li><a href="dashboard.php?userID=<?= $id?>">Home</a></li>
+        <li><a href="profilo.php?userID=<?= $id?>">Profilo</a></li>
         <li><a href="../index.html" class="button">Logout</a></li>
->>>>>>> Stashed changes
       </ul>
     </div>
   </header>
@@ -86,28 +80,28 @@
   <div id="sidebar" class="sidebar">
     <h3>Materie</h3>
     <ul>
-      <li><a href="categoria.php?id=1&userID=<?php$id?>">Italiano</a></li>
-      <li><a href="categoria.php?id=2&userID=<?php$id?>">Storia</a></li>
-      <li><a href="categoria.php?id=3&userID=<?php$id?>">Geografia</a></li>
-      <li><a href="categoria.php?id=4&userID=<?php$id?>">Diritto ed economia</a></li>
-      <li><a href="categoria.php?id=5&userID=<?php$id?>">Matematica</a></li>
-      <li><a href="categoria.php?id=6&userID=<?php$id?>">Fisica</a></li>
-      <li><a href="categoria.php?id=7&userID=<?php$id?>">Chimica</a></li>
-      <li><a href="categoria.php?id=8&userID=<?php$id?>">Scienze della terra</a></li>
-      <li><a href="categoria.php?id=9&userID=<?php$id?>">Tecnologie Informatiche</a></li>
-      <li><a href="categoria.php?id=10&userID=<?php$id?>">TRG</a></li>
-      <li><a href="categoria.php?id=11&userID=<?php$id?>">Educazione fisica</a></li>
-      <li><a href="categoria.php?id=12&userID=<?php$id?>">Scienze e tecnologie applicate</a></li>
+      <li><a href="categoria.php?id=1&userID=<?= $id?>">Italiano</a></li>
+      <li><a href="categoria.php?id=2&userID=<?= $id?>">Storia</a></li>
+      <li><a href="categoria.php?id=3&userID=<?= $id?>">Geografia</a></li>
+      <li><a href="categoria.php?id=4&userID=<?= $id?>">Diritto ed economia</a></li>
+      <li><a href="categoria.php?id=5&userID=<?= $id?>">Matematica</a></li>
+      <li><a href="categoria.php?id=6&userID=<?= $id?>">Fisica</a></li>
+      <li><a href="categoria.php?id=7&userID=<?= $id?>">Chimica</a></li>
+      <li><a href="categoria.php?id=8&userID=<?= $id?>">Scienze della terra</a></li>
+      <li><a href="categoria.php?id=9&userID=<?= $id?>">Tecnologie Informatiche</a></li>
+      <li><a href="categoria.php?id=10&userID=<?= $id?>">TRG</a></li>
+      <li><a href="categoria.php?id=11&userID=<?= $id?>">Educazione fisica</a></li>
+      <li><a href="categoria.php?id=12&userID=<?= $id?>">Scienze e tecnologie applicate</a></li>
       <li><a><b>Indirizzo Informatica:</b></a></li>
-      <li><a href="categoria.php?id=13&userID=<?php$id?>"> Informatica</a></li>
-      <li><a href="categoria.php?id=14&userID=<?php$id?>"> Sistemi e reti</a></li>
-      <li><a href="categoria.php?id=15&userID=<?php$id?>"> TPSIT</a></li>
-      <li><a href="categoria.php?id=16&userID=<?php$id?>"> Telecomunicazioni</a></li>
-      <li><a href="categoria.php?id=17&userID=<?php$id?>"> GEPRO</a></li>
+      <li><a href="categoria.php?id=13&userID=<?= $id?>"> Informatica</a></li>
+      <li><a href="categoria.php?id=14&userID=<?= $id?>"> Sistemi e reti</a></li>
+      <li><a href="categoria.php?id=15&userID=<?= $id?>"> TPSIT</a></li>
+      <li><a href="categoria.php?id=16&userID=<?= $id?>"> Telecomunicazioni</a></li>
+      <li><a href="categoria.php?id=17&userID=<?= $id?>"> GEPRO</a></li>
       <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
-      <li><a href="categoria.php?id=18&userID=<?php$id?>"> Elettrotecnica</a></li>
-      <li><a href="categoria.php?id=19&userID=<?php$id?>"> Sistemi</a></li>
-      <li><a href="categoria.php?id=20&userID=<?php$id?>"> TPSEE</a></li>
+      <li><a href="categoria.php?id=18&userID=<?= $id?>"> Elettrotecnica</a></li>
+      <li><a href="categoria.php?id=19&userID=<?= $id?>"> Sistemi</a></li>
+      <li><a href="categoria.php?id=20&userID=<?= $id?>"> TPSEE</a></li>
       <li><a> ... </a></li>
     </ul>
   </div>

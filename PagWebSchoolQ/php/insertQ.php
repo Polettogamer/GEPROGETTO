@@ -13,15 +13,23 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
+$conn->set_charset("utf8mb4");
+
 
 // Controlla se i dati sono stati inviati via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
-        // Recupero dati dal form
+
+
+        // Recupero e sanificazione dati dal form
+        $categoria = $conn->real_escape_string($_POST['categoria']);
         $testo = $conn->real_escape_string($_POST['domanda']);
-        $categoria = intval($_POST['categoria']); 
-        $userID = $id; 
+        $userID = $id;
         $dataPubblicazione = date('Y-m-d H:i:s');
+
+        
+        
+        
 
         // Query per inserire la domanda con Prepared Statements
         $sql = "INSERT INTO domande (dataPubbl, QuestionText, nLike, categoriaID, userID) 

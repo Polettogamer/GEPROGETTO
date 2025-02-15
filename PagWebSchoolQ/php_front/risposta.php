@@ -71,15 +71,9 @@
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-<<<<<<< Updated upstream
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a class="button">Logout</a></li>
-=======
         <li><a href="dashboard.php?userID=<?php$id?>">Home</a></li>
         <li><a href="profilo.php?userID=<?php$id?>">Profilo</a></li>
         <li><a href="../index.html" class="button">Logout</a></li>
->>>>>>> Stashed changes
       </ul>
     </div>
   </header>
