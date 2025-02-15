@@ -120,6 +120,7 @@
           echo   '</div>';
           echo   '<div class="question-body">';
           echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
+          echo     '<a href="risposta.php?id=' . $iddomanda . '" class="response-button">Rispondi</a>';
           echo   '</div>';
           echo   '<div class="question-footer">';
           echo     '<div class="question-stats">';

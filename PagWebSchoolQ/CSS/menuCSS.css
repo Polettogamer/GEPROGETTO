@@ -194,6 +194,31 @@
     .question-stats span {
       margin-right: 15px;
     }
+    
+    .question-body {
+      position: relative; /* Impostiamo la posizione relativa per contenere il bottone assoluto */
+      padding-bottom: 40px; /* Aggiungiamo un po' di spazio in basso per non coprire il bottone */
+    }
+    
+    .response-button {
+      position: absolute;
+      bottom: 10px; /* Posizioniamo il bottone a 10px dal fondo della casella */
+      right: 10px;  /* Posizioniamo il bottone a 10px dal lato destro della casella */
+      padding: 10px 20px;
+      background-color: #007BFF;  /* Colore di sfondo blu */
+      color: black;  /* Colore del testo bianco */
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease, color 0.3s ease; /* Aggiunto effetto per il colore del testo */
+    }
+    
+    .response-button:hover {
+      background-color: #0056b3; /* Colore più scuro quando ci passi sopra col mouse */
+      color: white; /* Colore del testo bianco quando ci passi sopra */
+    }
+    
     /* Stili generali per il footer */
 .footer {
     background-color: #0077ff; /* Colore di sfondo coerente con la sidebar e altri elementi */
