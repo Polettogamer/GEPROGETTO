@@ -1,5 +1,5 @@
 <?php
-$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="./dashboard.php?userID=<?php$id?>">Home</a></li>
+        <li><a href="./dashboard.php>">Home</a></li>
         <li><a href="../index.html" class="button">Logout</a></li>
       </ul>
     </div>

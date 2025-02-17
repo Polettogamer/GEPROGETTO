@@ -1,5 +1,5 @@
 <?php
-$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
+session_start();
 $domanda = isset($_GET['QuestionID']) ? intval($_GET['QuestionID']) : null;
 
 // Configurazione della connessione al database
@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 try {
     // Recupero dati dal form
     $testo = $conn->real_escape_string($_POST['risposta']); 
-    $userID = $id; 
+    $userID = $_SESSION['userID']; 
     $dataPubblicazione = date('Y-m-d H:i:s');
 
     // Query per inserire la domanda con Prepared Statements

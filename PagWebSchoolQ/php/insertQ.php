@@ -1,5 +1,5 @@
 <?php
-$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
+session_start();
 // Configurazione della connessione al database
 $servername = "localhost"; // Cambia se necessario
 $username = "root"; // Il tuo username del database
@@ -22,9 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         // Recupero e sanificazione dati dal form
-        $categoria = $conn->real_escape_string($_POST['categoria']);
-        $testo = $conn->real_escape_string($_POST['domanda']);
-        $userID = $id;
+        $categoria = filter_var($_POST['categoria'], FILTER_VALIDATE_INT);
+        $testo = trim($_POST['domanda']);
+        $userID = $_SESSION['userID'];
+        
+        if (!$categoria || empty($testo) || !$userID) {
+            header("Location: ../php_front/dashboard.php?error=invalid_input");
+            exit();
+        }
+        
         $dataPubblicazione = date('Y-m-d H:i:s');
 
         
@@ -45,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Esegui la query
         if ($stmt->execute()) {
-            header("Location: ../php_front/dashboard.php?success=insert_success&userID=$id");
+            header("Location: ../php_front/dashboard.php?success=insert_success");
             exit();
         } else {
             throw new Exception("Errore nell'esecuzione della query: " . $stmt->error);
@@ -55,13 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Controlla il codice errore MySQL per gestire errori specifici
         switch ($stmt->errno) {
             case 1452: // ER_NO_REFERENCED_ROW_2 (errore di chiave esterna)
-                header("Location: ../php_front/dashboard.php?error=invalid_foreign_key&userID=$id");
+                header("Location: ../php_front/dashboard.php?error=invalid_foreign_key");
                 break;
             case 1048: // ER_BAD_NULL_ERROR (campo obbligatorio nullo)
-                header("Location: ../php_front/dashboard.php?error=null_value&userID=$id");
+                header("Location: ../php_front/dashboard.php?error=null_value");
                 break;
             default:
-                header("Location: ../php_front/dashboard.php?error=db_error&userID=$id");
+                header("Location: ../php_front/dashboard.php?error=db_error");
         }
         exit();
     } finally {

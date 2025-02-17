@@ -36,7 +36,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['cognome'] = $cognome;
         $_SESSION['email'] = $email;
 
-        header("Location: ../php_front/dashboard.php?userID=$id"); // Reindirizza alla pagina principale
+        header("Location: ../php_front/dashboard.php?"); // Reindirizza alla pagina principale
         exit();
     } else {
         // Password errata

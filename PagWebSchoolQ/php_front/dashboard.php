@@ -26,7 +26,6 @@ $result = $conn->query($sql);
 if (!$result) {
     die("Errore nella query: " . $conn->error);
 }
-$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
 ?>
 
 <!DOCTYPE html>
@@ -62,12 +61,12 @@ $id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="dashboard.php?userID=<?php echo $id?>">Home</a></li>
-        <li><a href="profilo.php?userID=<?php echo $id?>">Profilo</a></li>
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="profilo.php">Profilo</a></li>
         <li><a href="../index.html" class="button">Logout</a></li>
       </ul>
       <div class="new-question-container">
-        <a href="nuova_domanda.php?userID=<?php echo $id?>" class="button new-question-btn">Nuova Domanda</a>
+        <a href="nuova_domanda.php" class="button new-question-btn">Nuova Domanda</a>
       </div>
     </div>
   </header>
@@ -76,28 +75,28 @@ $id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
   <div id="sidebar" class="sidebar">
     <h3>Materie</h3>
     <ul>
-      <li><a href="categoria.php?id=1&userID=<?php echo $id?>">Italiano</a></li>
-      <li><a href="categoria.php?id=2&userID=<?php echo $id?>">Storia</a></li>
-      <li><a href="categoria.php?id=3&userID=<?php echo $id?>">Geografia</a></li>
-      <li><a href="categoria.php?id=4&userID=<?php echo $id?>">Diritto ed economia</a></li>
-      <li><a href="categoria.php?id=5&userID=<?php echo $id?>">Matematica</a></li>
-      <li><a href="categoria.php?id=6&userID=<?php echo $id?>">Fisica</a></li>
-      <li><a href="categoria.php?id=7&userID=<?php echo $id?>">Chimica</a></li>
-      <li><a href="categoria.php?id=8&userID=<?php echo $id?>">Scienze della terra</a></li>
-      <li><a href="categoria.php?id=9&userID=<?php echo $id?>">Tecnologie Informatiche</a></li>
-      <li><a href="categoria.php?id=10&userID=<?php echo $id?>">TRG</a></li>
-      <li><a href="categoria.php?id=11&userID=<?php echo $id?>">Educazione fisica</a></li>
-      <li><a href="categoria.php?id=12&userID=<?php echo $id?>">Scienze e tecnologie applicate</a></li>
+      <li><a href="categoria.php?id=1">Italiano</a></li>
+      <li><a href="categoria.php?id=2">Storia</a></li>
+      <li><a href="categoria.php?id=3">Geografia</a></li>
+      <li><a href="categoria.php?id=4">Diritto ed economia</a></li>
+      <li><a href="categoria.php?id=5">Matematica</a></li>
+      <li><a href="categoria.php?id=6">Fisica</a></li>
+      <li><a href="categoria.php?id=7">Chimica</a></li>
+      <li><a href="categoria.php?id=8">Scienze della terra</a></li>
+      <li><a href="categoria.php?id=9">Tecnologie Informatiche</a></li>
+      <li><a href="categoria.php?id=10">TRG</a></li>
+      <li><a href="categoria.php?id=11">Educazione fisica</a></li>
+      <li><a href="categoria.php?id=12">Scienze e tecnologie applicate</a></li>
       <li><a><b>Indirizzo Informatica:</b></a></li>
-      <li><a href="categoria.php?id=13&userID=<?php echo $id?>"> Informatica</a></li>
-      <li><a href="categoria.php?id=14&userID=<?php echo $id?>"> Sistemi e reti</a></li>
-      <li><a href="categoria.php?id=15&userID=<?php echo $id?>"> TPSIT</a></li>
-      <li><a href="categoria.php?id=16&userID=<?php echo $id?>"> Telecomunicazioni</a></li>
-      <li><a href="categoria.php?id=17&userID=<?php echo $id?>"> GEPRO</a></li>
+      <li><a href="categoria.php?id=13"> Informatica</a></li>
+      <li><a href="categoria.php?id=14"> Sistemi e reti</a></li>
+      <li><a href="categoria.php?id=15"> TPSIT</a></li>
+      <li><a href="categoria.php?id=16"> Telecomunicazioni</a></li>
+      <li><a href="categoria.php?id=17"> GEPRO</a></li>
       <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
-      <li><a href="categoria.php?id=18&userID=<?php echo $id?>"> Elettrotecnica</a></li>
-      <li><a href="categoria.php?id=19&userID=<?php echo $id?>"> Sistemi</a></li>
-      <li><a href="categoria.php?id=20&userID=<?php echo $id?>"> TPSEE</a></li>
+      <li><a href="categoria.php?id=18"> Elettrotecnica</a></li>
+      <li><a href="categoria.php?id=19"> Sistemi</a></li>
+      <li><a href="categoria.php?id=20"> TPSEE</a></li>
       <li><a> ... </a></li>
     </ul>
   </div>
@@ -123,7 +122,7 @@ $id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
 
               echo   '<div class="question-footer">';
               // Link alla pagina delle risposte
-              echo     '<a href="risposta.php?id=' . $row["questionID"] . '" class="button&userID=' . $id .'">Vedi di più</a>';
+              echo     '<a href="risposta.php?id=' . $row["questionID"] . '" class="button">Vedi di più</a>';
 
               // Query per contare le risposte
               $questionID = intval($row["questionID"]);

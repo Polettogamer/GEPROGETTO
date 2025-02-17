@@ -1,10 +1,11 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "schoolq";
 
-$id = isset($_GET['userID']) ? intval($_GET['userID']) : null;
+
 
 // 1. Creazione connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -36,8 +37,8 @@ $resultCategorie = $conn->query($sqlCategorie);
                 <a href="dashboard.php"><img src="../Immagini/mondo01.png" alt="SchoolQ Logo"></a>
             </div>
             <ul class="nav-links">
-                <li><a href="dashboard.php?userID=<?php echo $id?>">Home</a></li>
-                <li><a href="profilo.php?userID=<?php echo $id?>">Profilo</a></li>
+                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="profilo.php">Profilo</a></li>
                 <li><a class="button">Logout</a></li>
             </ul>
         </div>
@@ -46,7 +47,7 @@ $resultCategorie = $conn->query($sqlCategorie);
     <div class="main-content">
         <h2>Fai una nuova domanda</h2>
         
-        <form method="POST" action="../php/insertQ.php?userID=<?= $id?>">
+        <form method="POST" action="../php/insertQ.php">
             <label for="categoria">Seleziona la categoria:</label>
             <select name="categoria" id="categoria" required>
                 <option value="">-- Seleziona una materia --</option>
