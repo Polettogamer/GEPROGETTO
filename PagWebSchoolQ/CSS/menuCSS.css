@@ -258,16 +258,6 @@
     color: #e0e0e0;
   }
   
-  /* Sezione "Seguici" per i social media */
-  .footer-section.social ul {
-    display: flex;
-    gap: 10px; /* Spazio tra le icone/link dei social */
-  }
-  
-  .footer-section.social ul li {
-    margin-bottom: 0;
-  }
-  
   /* Footer bottom: riga di copyright */
   .footer-bottom {
     width: 100%;

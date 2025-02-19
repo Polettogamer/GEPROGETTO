@@ -184,7 +184,7 @@
           <li><a href="supporto.html">Supporto</a></li>
         </ul>
       </div>
-      <div class="footer-section social">
+      <div class="footer-section">
         <h4>Seguici</h4>
         <ul>
           <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>

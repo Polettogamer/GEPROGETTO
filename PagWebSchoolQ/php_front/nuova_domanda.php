@@ -46,6 +46,7 @@ $resultCategorie = $conn->query($sqlCategorie);
     <meta charset="UTF-8">
     <title>Nuova Domanda - SchoolQ</title>
     <link rel="stylesheet" href="../CSS/menuCSS.css">
+    <link rel="stylesheet" href="../CSS/nuova_domandaCSS.css">
 </head>
 <body>
     <header class="top-navbar">
@@ -85,8 +86,43 @@ $resultCategorie = $conn->query($sqlCategorie);
     </div>
 
     <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Informazioni</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="guida.html">Come Funziona</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legale</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="termini.html">Termini e Condizioni</a></li>
+          <li><a href="regolamento.html">Regolamento</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contatti</h4>
+        <ul>
+          <li><a href="contact.html">Contattaci</a></li>
+          <li><a href="supporto.html">Supporto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Seguici</h4>
+        <ul>
+          <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
+          <li><a href="https://twitter.com/tuoforum" target="_blank">Twitter</a></li>
+          <li><a href="https://instagram.com/tuoforum" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
         <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
-    </footer>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 
