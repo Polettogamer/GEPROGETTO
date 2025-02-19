@@ -17,6 +17,37 @@ if ($iddomanda <= 0) {
 // Variabile per mostrare messaggi di feedback all'utente
 $feedback = "";
 
+// Dati per la connessione al database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "schoolq";
+
+// Creazione della connessione al database
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connessione fallita: " . $conn->connect_error);
+}
+$conn->set_charset("utf8mb4");
+
+// Query per ottenere i dettagli della domanda
+$stmt_domanda = $conn->prepare("SELECT d.*, u.nome, u.cognome, c.nome AS nomecat 
+                                FROM domande d 
+                                JOIN utenti u ON d.userID = u.userID
+                                JOIN categorie c ON c.IDCategoria = d.categoriaID
+                                WHERE d.QuestionID = ?");
+$stmt_domanda->bind_param("i", $iddomanda);
+$stmt_domanda->execute();
+$domanda = $stmt_domanda->get_result();
+
+// Controlla se la domanda esiste
+if ($domanda->num_rows > 0) {
+    $row_domanda = $domanda->fetch_assoc();
+} else {
+    die("Domanda non trovata.");
+}
+$stmt_domanda->close();
+
 // Se il form viene inviato (metodo POST) allora si processa la risposta
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recupera il testo della risposta e rimuove eventuali spazi superflui
@@ -30,23 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     elseif (strlen($testoRisposta) > 1000) {
         $feedback = "La risposta non può contenere più di 1000 caratteri.";
     } else {
-        // Dati per la connessione al database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "schoolq";
-        
-        // Creazione della connessione al database
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . $conn->connect_error);
-        }
-        // Imposta la codifica dei caratteri per supportare UTF-8
-        $conn->set_charset("utf8mb4");
-
-        // Preparazione della query per inserire la nuova risposta.
-        // Si assume che la tabella "risposte" contenga i campi:
-        // questionID, userID, testoRisposta, dataPubbl, nLike.
+        // Preparazione della query per inserire la nuova risposta
         $stmt = $conn->prepare("INSERT INTO risposte (questionID, userID, testoRisposta, dataPubbl, nLike) VALUES (?, ?, ?, NOW(), 0)");
         $userID = $_SESSION['userID']; // Recupera l'ID dell'utente dalla sessione
         $stmt->bind_param("iis", $iddomanda, $userID, $testoRisposta);
@@ -61,16 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $feedback = "Errore durante l'invio della risposta: " . $stmt->error;
         }
         $stmt->close();
-        $conn->close();
     }
 }
+
+// Chiudi la connessione al database
+$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>Nuova Risposta</title>
-    <!-- Collegamento al file CSS specifico per la pagina nuova_risposta -->
     <link rel="stylesheet" href="../CSS/nuova_risposta.css">
     <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -93,12 +110,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- CONTENUTO PRINCIPALE -->
     <div class="main-content">
         <h2>Rispondi alla domanda</h2>
+
+        <!-- Visualizza i dettagli della domanda -->
+        <div class="question-preview">
+            <h3>Stai rispondendo a:</h3>
+            <div class="question-header">
+                <h4 class="question-title"><?php echo htmlspecialchars($row_domanda["nomecat"]); ?></h4>
+                <p class="question-meta">
+                    Pubblicato il <?php echo $row_domanda["dataPubbl"]; ?> - 
+                    da <strong><?php echo htmlspecialchars($row_domanda['nome'] . ' ' . $row_domanda['cognome']); ?></strong>
+                </p>
+            </div>
+            <div class="question-body">
+                <p><?php echo nl2br(htmlspecialchars($row_domanda["QuestionText"])); ?></p>
+            </div>
+        </div>
+        <hr>
+
         <!-- Visualizza eventuali messaggi di feedback -->
         <?php
         if ($feedback != "") {
             echo '<p class="feedback">' . htmlspecialchars($feedback) . '</p>';
         }
         ?>
+
         <!-- Form per inviare la risposta -->
         <form action="nuova_risposta.php?id=<?php echo $iddomanda; ?>" method="post">
             <div class="form-group">
@@ -111,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- Link per tornare manualmente alla pagina delle risposte -->
         <form action="risposta.php" method="GET">
             <input type="hidden" name="id" value="<?php echo $iddomanda; ?>">
-            <button type="submit" class="button">Torna alle Risposte</button>
+            <button type="submit" class="button">Torna alla domanda</button>
         </form>
     </div>
 

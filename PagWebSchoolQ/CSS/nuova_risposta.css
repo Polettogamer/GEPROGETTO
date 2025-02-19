@@ -145,6 +145,49 @@ body {
   .main-content.shifted {
     margin-left: 320px; /* 300px sidebar + 20px margine */
   }
+
+  /*visualizzazione domanda da rispondere*/
+    .main-content {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+  }
+  
+  .main-content h2 {
+      font-size: 24px;
+      color: #004c97;
+      margin-bottom: 15px;
+  }
+  
+  .question-preview {
+      margin-bottom: 20px;
+  }
+  
+  .question-header {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+  }
+  
+  .question-header h4 {
+      font-size: 20px;
+      color: #333;
+  }
+  
+  .question-header .question-meta {
+      font-size: 14px;
+      color: #888;
+  }
+  
+  .question-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+  }
   
   /* STILI SPECIFICI PER LA PAGINA NUOVA_RISPOSTA */
   .main-content h2 {
@@ -174,6 +217,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none; 
+    width: calc(100% - 20px);   
   }
   
   /* Bottone per inviare la risposta */
@@ -213,6 +257,8 @@ body {
     .button:hover {
         background-color: #005bb5;
     }
+
+  
 
   /* Messaggi di feedback */
   .feedback {
