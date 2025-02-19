@@ -201,7 +201,6 @@
     }
     
     .response-button {
-      position: absolute;
       bottom: 10px; /* Posizioniamo il bottone a 10px dal fondo della casella */
       right: 10px;  /* Posizioniamo il bottone a 10px dal lato destro della casella */
       padding: 10px 20px;

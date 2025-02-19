@@ -1,6 +1,6 @@
 <?php
 session_start();
-$domanda = isset($_GET['QuestionID']) ? intval($_GET['QuestionID']) : null;
+
 
 // Configurazione della connessione al database
 $servername = "localhost"; // Cambia se necessario
@@ -15,10 +15,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
+$conn->set_charset("utf8mb4");
 
 try {
     // Recupero dati dal form
     $testo = $conn->real_escape_string($_POST['risposta']); 
+    $domanda = ($_POST['QuestionID']);
     $userID = $_SESSION['userID']; 
     $dataPubblicazione = date('Y-m-d H:i:s');
 
@@ -36,7 +38,7 @@ try {
 
     // Esegui la query
     if ($stmt->execute()) {
-        header("Location: ../php_front/dashboard.php?success=insert_success&userID=$id");
+        header("Location: ../php_front/risposta.php?id=$domanda&success=insert_success");
         exit();
     } else {
         throw new Exception("Errore nell'esecuzione della query: " . $stmt->error);
@@ -46,13 +48,13 @@ try {
     // Controlla il codice errore MySQL per gestire errori specifici
     switch ($stmt->errno) {
         case 1452: // ER_NO_REFERENCED_ROW_2 (errore di chiave esterna)
-            header("Location: ../php_front/dashboard.php?error=invalid_foreign_key&userID=$id");
+            header("Location: ../php_front/risposta.php?id=$domanda&error=invalid_foreign_key");
             break;
         case 1048: // ER_BAD_NULL_ERROR (campo obbligatorio nullo)
-            header("Location: ../php_front/dashboard.php?error=null_value&userID=$id");
+            header("Location: ../php_front/risposta.php?id=$domanda&error=null_value");
             break;
         default:
-            header("Location: ../php_front/dashboard.php?error=db_error&userID=$id");
+            header("Location: ../php_front/risposta.php?id=$domanda&error=db_error&");
     }
     exit();
 } finally {

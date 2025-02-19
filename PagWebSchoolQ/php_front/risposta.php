@@ -36,7 +36,9 @@
     if (!$result) {
         die("Errore nella query: " . $conn->error);
     }
-
+    if ($domanda->num_rows > 0) {
+      $question = $domanda->fetch_assoc();
+    }
     $conn->close();
 ?>
 <!DOCTYPE html>
@@ -59,6 +61,21 @@
       } else {
         sidebar.classList.add("active");
         mainContent.classList.add("shifted");
+      }
+    }
+    function toggleNewAnswer() {
+      var formdiv = document.getElementById("form");
+
+      if (formdiv) {  // Controlla se l'elemento esiste
+        if (formdiv.classList.contains("hidden")) {
+          formdiv.classList.remove("hidden");  // Mostra il form
+          formdiv.style.display = "block";      // Assicurati che venga visualizzato
+        } else {
+          formdiv.classList.add("hidden");     // Nascondi il form
+          formdiv.style.display = "none";      // Rimuove il form dal layout
+        }
+      } else {
+        console.error("Elemento con ID 'form' non trovato.");
       }
     }
   </script>
@@ -111,35 +128,43 @@
   
   <div id="main-content" class="main-content">
     <div id="domanda" class="domanda">
-      <?php
-      if ($domanda->num_rows > 0) {
-          $row = $domanda->fetch_assoc();
-          echo '<div class="question-item">';
-          echo   '<div class="question-header">';
-          echo     '<h3 class="question-title">' . htmlspecialchars($row["nomecat"]) . '</h3>';
-          echo     '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '</strong></div>';
-          echo   '</div>';
-          echo   '<div class="question-body">';
-          echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
-          echo     '<a href="nuova_risposta.php?id=' . $iddomanda . '" class="response-button">Rispondi</a>';
-          echo   '</div>';
-          echo   '<div class="question-footer">';
-          echo     '<div class="question-stats">';
-          echo       '<span>Risposte: 4</span>';
-          echo       '<span>Likes: ' . htmlspecialchars($row["nLike"]) . '</span>';
-          echo     '</div>';
-          echo   '</div>';
-          echo '</div>';
-          echo '<hr class="separator">';
-          echo '<h3 class="response-title">Risposte:</h3>';
-      } else {
-          echo "<p>Nessuna domanda disponibile.</p>";
-      }
-      ?>
+      <div class="question-item">
+        <div class="question-header">
+          <h3 class="question-title"><?= htmlspecialchars($question["nomecat"]) ?></h3>
+          <div class="question-meta">Pubblicato alle<?=$question["dataPubbl"] ?>
+            <strong><?= $question['nome']?> <?=$question['cognome']?></strong>
+          </div>
+        </div>
+        <div class="question-body">
+        <p><?=nl2br(htmlspecialchars($question["QuestionText"]))?></p>
+        </div>
+        <div class="question-footer">
+        <button onclick="toggleNewAnswer()" class="response-button">Nuova Risposta </button>
+          <div class="question-stats">
+            <span>Risposte: 4</span>
+            <span>Likes:<?=htmlspecialchars($question["nLike"])?></span>
+          </div>
+        </div>
+        <div id="form" style="display:none" class="hidden">
+            <h2>Rispondi alla domanda</h2>
+            <!-- Form per inviare la risposta -->
+            <form action="../php/insertA.php" method="post">
+              <div class="form-group">
+                <label for="risposta">Inserisci la tua risposta:</label>
+                <textarea id="risposta" name="risposta" rows="8" required></textarea>
+                <input type="hidden" id="QuestionID" name="QuestionID" value="<?=$iddomanda?>" readonly>
+              </div>
+              <button type="submit" class="response-button">Invia Risposta</button>
+            </form>
+            <br>
+          </div>
+      </div>
+      <hr class="separator">'
+      <h3 class="response-title">Risposte:</h3>
     </div>
     <div class="risposte">
       <?php
-      if ($result->num_rows > 0) {
+      if ($result && $result->num_rows > 0) {
           echo '<div class="question-item">';
           while($row = $result->fetch_assoc()){
               echo '<div class="question-header">';
