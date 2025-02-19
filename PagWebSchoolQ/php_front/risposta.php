@@ -1,6 +1,5 @@
 <?php
-    session_start();
-
+  session_start();
     $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
   
     $servername = "localhost";
@@ -16,7 +15,7 @@
     }
     
     $conn->set_charset("utf8mb4");
-    $iddomanda = $_GET['id'];
+
     // Prepared statement per le risposte
     $stmt = $conn->prepare("SELECT r.*, u.nome, u.cognome FROM risposte r
                         JOIN utenti u ON r.userID = u.userID
@@ -29,7 +28,7 @@
     $stmt_domanda = $conn->prepare("SELECT d.*, u.nome, u.cognome, c.nome AS nomecat FROM domande d 
                                     JOIN utenti u ON d.userID = u.userID
                                     JOIN categorie c ON c.IDCategoria = d.categoriaID
-                                    WHERE questionID = ?");
+                                    WHERE QuestionID = ?");
     $stmt_domanda->bind_param("i", $iddomanda);
     $stmt_domanda->execute();
     $domanda = $stmt_domanda->get_result();
@@ -37,9 +36,7 @@
     if (!$result) {
         die("Errore nella query: " . $conn->error);
     }
-    if ($domanda->num_rows > 0) 
-      $row = $domanda->fetch_assoc();
-    
+
     $conn->close();
 ?>
 <!DOCTYPE html>
@@ -63,9 +60,6 @@
         sidebar.classList.add("active");
         mainContent.classList.add("shifted");
       }
-    }
-    function spazioPerRisposta(){
-      //completare
     }
   </script>
 </head>
