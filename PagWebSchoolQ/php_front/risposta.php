@@ -1,5 +1,5 @@
 <?php
-    session_start()
+    session_start();
 
     $servername = "localhost";
     $username = "root";
@@ -14,7 +14,7 @@
     }
     
     $conn->set_charset("utf8mb4");
-
+    $iddomanda = $_GET['id'];
     // Prepared statement per le risposte
     $stmt = $conn->prepare("SELECT r.*, u.nome, u.cognome FROM risposte r
                         JOIN utenti u ON r.userID = u.userID
@@ -27,7 +27,7 @@
     $stmt_domanda = $conn->prepare("SELECT d.*, u.nome, u.cognome, c.nome AS nomecat FROM domande d 
                                     JOIN utenti u ON d.userID = u.userID
                                     JOIN categorie c ON c.IDCategoria = d.categoriaID
-                                    WHERE QuestionID = ?");
+                                    WHERE questionID = ?");
     $stmt_domanda->bind_param("i", $iddomanda);
     $stmt_domanda->execute();
     $domanda = $stmt_domanda->get_result();
@@ -35,6 +35,8 @@
     if (!$result) {
         die("Errore nella query: " . $conn->error);
     }
+    if ($domanda->num_rows > 0) 
+      $row = $domanda->fetch_assoc();
     
     $conn->close();
 ?>
@@ -59,6 +61,9 @@
         sidebar.classList.add("active");
         mainContent.classList.add("shifted");
       }
+    }
+    function spazioPerRisposta(){
+      //completare
     }
   </script>
 </head>
@@ -110,28 +115,23 @@
   
   <div id="main-content" class="main-content">
     <div id="domanda" class="domanda">
-      <?php
-      if ($domanda->num_rows > 0) {
-          $row = $domanda->fetch_assoc();
-          echo '<div class="question-item">';
-          echo   '<div class="question-header">';
-          echo     '<h3 class="question-title">' . htmlspecialchars($row["nomecat"]) . '</h3>';
-          echo     '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '</strong></div>';
-          echo   '</div>';
-          echo   '<div class="question-body">';
-          echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
-          echo   '</div>';
-          echo   '<div class="question-footer">';
-          echo     '<div class="question-stats">';
-          echo       '<span>Risposte: 4</span>';
-          echo       '<span>Likes: ' . htmlspecialchars($row["nLike"]) . '</span>';
-          echo     '</div>';
-          echo   '</div>';
-          echo '</div>';
-      } else {
-          echo "<p>Nessuna domanda disponibile.</p>";
-      }
-      ?>
+      <div class="question-item">
+        <div class="question-header">
+          <h3 class="question-title"><?=htmlspecialchars($row["nomecat"])?></h3>
+        <div class="question-meta">Pubblicato alle<?php echo  $row["dataPubbl"] . ' - da <strong>' . $row['nome'] .' ' .  $row['cognome'];?></strong></div>
+        </div>
+        <div class="question-body">
+          <p><?=nl2br(htmlspecialchars($row["QuestionText"]))?></p>
+        </div>
+        <div class="question-footer">
+          <div class="new-answer-container">
+            <button onclick="spazioPerRisposta()" disabled>inserisci Risposta</button>
+          </div>
+          <div class="question-stats">
+            <span>Likes:<?=htmlspecialchars($row["nLike"])?></span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="risposte">
       <?php
