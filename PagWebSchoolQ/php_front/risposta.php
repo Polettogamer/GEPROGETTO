@@ -159,7 +159,7 @@
             <br>
           </div>
       </div>
-      <hr class="separator">'
+      <hr class="separator">
       <h3 class="response-title">Risposte:</h3>
     </div>
     <div class="risposte">
