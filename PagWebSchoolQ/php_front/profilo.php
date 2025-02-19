@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -21,7 +17,7 @@ session_start();
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
       <ul class="nav-links">
-        <li><a href="./dashboard.php>">Home</a></li>
+        <li><a href="./dashboard.php">Home</a></li>
         <li><a href="../index.html" class="button">Logout</a></li>
       </ul>
     </div>
@@ -73,7 +69,7 @@ session_start();
             </div>
             <!-- Bottone per salvare le modifiche -->
             <div class="form-group">
-              <button type="submit" class="button">Salva modifiche</button>
+              <button type="submit" class="button" disabled>Salva modifiche</button>
             </div>
           </form>
         </div>

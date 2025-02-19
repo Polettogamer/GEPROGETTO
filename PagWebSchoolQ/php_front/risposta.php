@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
+  
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -115,23 +117,31 @@
   
   <div id="main-content" class="main-content">
     <div id="domanda" class="domanda">
-      <div class="question-item">
-        <div class="question-header">
-          <h3 class="question-title"><?=htmlspecialchars($row["nomecat"])?></h3>
-        <div class="question-meta">Pubblicato alle<?php echo  $row["dataPubbl"] . ' - da <strong>' . $row['nome'] .' ' .  $row['cognome'];?></strong></div>
-        </div>
-        <div class="question-body">
-          <p><?=nl2br(htmlspecialchars($row["QuestionText"]))?></p>
-        </div>
-        <div class="question-footer">
-          <div class="new-answer-container">
-            <button onclick="spazioPerRisposta()" disabled>inserisci Risposta</button>
-          </div>
-          <div class="question-stats">
-            <span>Likes:<?=htmlspecialchars($row["nLike"])?></span>
-          </div>
-        </div>
-      </div>
+      <?php
+      if ($domanda->num_rows > 0) {
+          $row = $domanda->fetch_assoc();
+          echo '<div class="question-item">';
+          echo   '<div class="question-header">';
+          echo     '<h3 class="question-title">' . htmlspecialchars($row["nomecat"]) . '</h3>';
+          echo     '<div class="question-meta">Pubblicato alle ' . $row["dataPubbl"] . ' - da <strong>' . $row['nome'] . ' ' . $row['cognome'] . '</strong></div>';
+          echo   '</div>';
+          echo   '<div class="question-body">';
+          echo     '<p>' . nl2br(htmlspecialchars($row["QuestionText"])) . '</p>';
+          echo     '<a href="nuova_risposta.php?id=' . $iddomanda . '" class="response-button">Rispondi</a>';
+          echo   '</div>';
+          echo   '<div class="question-footer">';
+          echo     '<div class="question-stats">';
+          echo       '<span>Risposte: 4</span>';
+          echo       '<span>Likes: ' . htmlspecialchars($row["nLike"]) . '</span>';
+          echo     '</div>';
+          echo   '</div>';
+          echo '</div>';
+          echo '<hr class="separator">';
+          echo '<h3 class="response-title">Risposte:</h3>';
+      } else {
+          echo "<p>Nessuna domanda disponibile.</p>";
+      }
+      ?>
     </div>
     <div class="risposte">
       <?php
