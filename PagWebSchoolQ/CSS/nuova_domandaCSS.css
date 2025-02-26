@@ -1,0 +1,67 @@
+.main-content {
+  max-width: 800px;
+  margin: 120px auto 60px;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 35px;
+}
+
+.main-content h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #0077ff;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.main-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main-content form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.main-content form select,
+.main-content form textarea,
+.main-content form input[type="text"] {
+  font-size: 16px;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-content form select:focus,
+.main-content form textarea:focus,
+.main-content form input[type="text"]:focus {
+  border-color: #0077ff;
+}
+
+.main-content form textarea {
+  resize: vertical;
+}
+
+.main-content form button {
+  background-color: #0099ff;
+  color: #fff;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.main-content form button:hover {
+  background-color: #0077ff;
+}

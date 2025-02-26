@@ -60,13 +60,16 @@ if (!$result) {
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
-      <ul class="nav-links">
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a href="../index.html" class="button">Logout</a></li>
-      </ul>
-      <div class="new-question-container">
-        <a href="nuova_domanda.php" class="button new-question-btn">Nuova Domanda</a>
+      <div class="right-group">
+        <ul class="nav-links">
+          <li><a href="dashboard.php">Home</a></li>
+          <li><a href="profilo.php">Profilo</a></li>
+          <li><a href="logout.php" class="button">Logout</a></li>
+          <li><a href="nuova_domanda.php" class="button new-question-btn">Nuova Domanda</a></li>
+        </ul>
+        <!--<div class="new-question-container">
+          
+        </div>-->
       </div>
     </div>
   </header>
@@ -179,7 +182,7 @@ if (!$result) {
           <li><a href="supporto.html">Supporto</a></li>
         </ul>
       </div>
-      <div class="footer-section social">
+      <div class="footer-section">
         <h4>Seguici</h4>
         <ul>
           <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>

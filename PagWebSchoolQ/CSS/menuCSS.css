@@ -8,15 +8,16 @@
     
     /* TOP NAVBAR: centrata e moderna */
     .top-navbar {
-      position: fixed;
+      position: fixed;     
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100%;     
       background-color: #ffffff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       z-index: 1100;
       padding: 10px 0;
     }
+
     .nav-container {
       max-width: 1200px;
       margin: 100 auto;
@@ -25,23 +26,30 @@
       align-items: center;
       padding: 0 20px;
     }
+
     .nav-container .logo {
       display: flex;
       align-items: center;
     }
+    
     .nav-container .logo img {
       max-height: 50px;
       margin-right: 1200px;
     }
+      
     .nav-links {
+      display: flex;   
+      justify-content: flex-end; 
       list-style: none;
-      display: flex;
       margin: 0;
       padding: 0;
     }
+
     .nav-links li {
       margin: 0 15px;
+      display: flex;
     }
+    
     .nav-links li a {
       text-decoration: none;
       color: #333;
@@ -51,6 +59,7 @@
       border: 2px solid transparent;
       border-radius: 50px;
       transition: all 0.3s ease;
+
     }
     .nav-links li a:hover {
       background-color: #0077ff;
@@ -285,16 +294,6 @@
   
   .footer-section ul li a:hover {
     color: #e0e0e0;
-  }
-  
-  /* Sezione "Seguici" per i social media */
-  .footer-section.social ul {
-    display: flex;
-    gap: 10px; /* Spazio tra le icone/link dei social */
-  }
-  
-  .footer-section.social ul li {
-    margin-bottom: 0;
   }
   
   /* Footer bottom: riga di copyright */
