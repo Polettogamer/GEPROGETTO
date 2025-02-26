@@ -36,7 +36,12 @@
       max-height: 50px;
       margin-right: 1200px;
     }
-      
+    .new-question-container {
+      position: absolute;
+      top: 100px; /* Regola la distanza dall'alto */
+      right: 15px; /* Allinea a destra */
+      z-index: 100; /* Assicura che sia sopra gli altri elementi */
+    }
     .nav-links {
       display: flex;   
       justify-content: flex-end; 
@@ -305,4 +310,6 @@
     margin-top: 20px;
     font-size: 14px;
   }
+  
+
   
