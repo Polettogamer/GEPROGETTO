@@ -29,6 +29,7 @@ $resultCategorie = $conn->query($sqlCategorie);
     <meta charset="UTF-8">
     <title>Nuova Domanda - SchoolQ</title>
     <link rel="stylesheet" href="../CSS/menuCSS.css">
+    <link rel="stylesheet" href="../CSS/nuova_domandaCSS.css">
 </head>
 <body>
     <header class="top-navbar">
@@ -92,7 +93,7 @@ $resultCategorie = $conn->query($sqlCategorie);
           <li><a href="supporto.html">Supporto</a></li>
         </ul>
       </div>
-      <div class="footer-section social">
+      <div class="footer-section">
         <h4>Seguici</h4>
         <ul>
           <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
