@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -27,7 +28,7 @@
   <div id="main-content" class="main-content">
     <div class="profile-container">
       <h2>Profilo utente</h2>
-      <div class="profile-card"> <?php ..  /* questo è il div principale*/?>
+      <div class="profile-card"> <?php/* questo è il div principale*/?>
       <form action="../php/editProfilo.php">
         <!-- Sezione immagine del profilo -->
         <div class="profile-image">
@@ -47,7 +48,7 @@
             <!-- Campo: Classe -->
             <div class="form-group">
               <label for="class">Classe</label>
-              <input type="text" id="class" name="class" placeholder="Es. 1A, 2B..." required>
+              <input type="text" id="class" name="classe" placeholder="Es. 1A, 2B..." required>
             </div>
             <!-- Campo: Indirizzo Scolastico come scelta multipla -->
             <div class="form-group">
