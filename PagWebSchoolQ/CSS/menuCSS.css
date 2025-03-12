@@ -179,23 +179,64 @@
       font-size: 16px;
       margin: 10px 0;
     }
+    /* Sposta il bottone "Nuova Risposta" a destra */
     .question-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 10px;
     }
-    .question-footer .button {
-      background-color: #0077ff;
+
+    .response-button {
+      background-color: #007bff;
       color: white;
+      border: none;
       padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
+      cursor: pointer;
       font-size: 14px;
+      border-radius: 5px;
+      transition: 0.3s;
     }
-    .question-footer .button:hover {
-      background-color: #005bb5;
+
+    .response-button:hover {
+      background-color: #0056b3;
     }
+
+    /* Stile migliorato per l'area della risposta */
+    #form {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      margin-top: 15px;
+      /*max-width: 600px; */
+      width: 100%; /* Si adatta alla dimensione del contenitore */
+      box-sizing: border-box; /* Evita che il padding faccia sforare il contenuto */
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      box-sizing: border-box; /* Assicura che il padding non faccia sforare l'elemento */
+    }
+
+    button.response-button {
+      align-self: flex-end;
+    }
+    /* Allineamento del bottone */
+    button.response-button {
+      align-self: flex-end;
+    }
+
     .question-stats {
       font-size: 14px;
       color: #555;

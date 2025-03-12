@@ -154,6 +154,7 @@
                 <textarea id="risposta" name="risposta" rows="8" required></textarea>
                 <input type="hidden" id="QuestionID" name="QuestionID" value="<?=$iddomanda?>" readonly>
               </div>
+              <br>
               <button type="submit" class="response-button">Invia Risposta</button>
             </form>
             <br>
