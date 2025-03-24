@@ -22,21 +22,7 @@ function upload($conn, $dove, $dato, $id_utente) {
     $stmt->close();
 }
 
-// Configurazione della connessione al database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
-
-// Creazione della connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Controllo della connessione
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
-$conn->set_charset("utf8mb4");
-
+require_once "connection.php";
 // Recupero dati dal form
 $classe = $_POST["classe"];
 $indirizzo = $_POST["schoolAddress"];

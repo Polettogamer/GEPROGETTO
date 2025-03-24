@@ -2,19 +2,7 @@
     session_start();
     $categoria = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schoolq";
-    
-    // Creazione connessione
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connessione fallita: " . $conn->connect_error);
-    }
-    
-    $conn->set_charset("utf8mb4");
+    require_once "../php/connection.php";
 
    
     $stmt = $conn->prepare("SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome, c.descrizione
@@ -72,7 +60,7 @@
       <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
         <li><a href="profilo.php">Profilo</a></li>
-        <!--li><a href="../index.html" class="button">Logout</a></li-->
+        <li><a href="../php/log_out.php" class="button">Logout</a></li>
       </ul>
     </div>
   </header>
