@@ -1,10 +1,32 @@
 <?php
 session_start();
+$id_utente = $_SESSION["userID"];
+
+// Funzione per aggiornare un campo nel database
+function upload($conn, $dove, $dato, $id_utente) {
+    $sql = "UPDATE utenti SET $dove = ? WHERE userID = ?";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        error_log("Errore nella preparazione della query: " . $conn->error);
+        header("Location: ../php_front/profilo.php?error=db");
+        exit;
+    }
+
+    // Associazione parametri e esecuzione
+    $stmt->bind_param("si", $dato, $id_utente);
+    if (!$stmt->execute()) {
+        error_log("Errore durante l'aggiornamento: " . $stmt->error);
+        header("Location: ../php_front/profilo.php?error=update");
+        exit;
+    }
+    $stmt->close();
+}
+
 // Configurazione della connessione al database
-$servername = "localhost"; // Cambia se necessario
-$username = "root"; // Il tuo username del database
-$password = ""; // La tua password del database
-$dbname = "schoolq"; // Nome del database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "schoolq";
 
 // Creazione della connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,21 +39,57 @@ $conn->set_charset("utf8mb4");
 
 // Recupero dati dal form
 $classe = $_POST["classe"];
+$indirizzo = $_POST["schoolAddress"];
+$descrizione = $_POST["bio"];
 
+upload($conn, "bio", $descrizione, $id_utente);
+upload($conn, "indirizzo", $indirizzo, $id_utente);
+upload($conn, "classe", $classe, $id_utente);
 
-$target_dir = "../Immagini";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
+// Gestione upload immagine
+if (!empty($_FILES['immagine']['name'])) {
+    $target_dir = "../imgprofilo/";
+    $imageFileType = strtolower(pathinfo($_FILES['immagine']['name'], PATHINFO_EXTENSION));
+    $newFileName = "img_" . $id_utente . "_" . time() . "." . $imageFileType;
+    $target_file = $target_dir . $newFileName;
+
+    // Verifica se il file è un'immagine
+    $check = getimagesize($_FILES['immagine']['tmp_name']);
+    if ($check === false) {
+        header("Location: ../php_front/profilo.php?error=file");
+        exit;
+    }
+
+    // Spostamento del file nella cartella imgprofilo
+    if (!move_uploaded_file($_FILES['immagine']['tmp_name'], $target_file)) {
+        header("Location: ../php_front/profilo.php?error=upload");
+        exit;
+    }
+
+    // Aggiornamento del database con il nuovo nome del file
+    $stmt = $conn->prepare("UPDATE utenti SET immagine = ? WHERE userID = ?");
+    if (!$stmt) {
+        error_log("Errore nella preparazione della query: " . $conn->error);
+        header("Location: ../php_front/profilo.php?error=db");
+        exit;
+    }
+    
+    $stmt->bind_param("si", $newFileName, $id_utente);
+    
+    if (!$stmt->execute()) {
+        error_log("Errore durante l'aggiornamento dell'immagine: " . $stmt->error);
+        header("Location: ../php_front/profilo.php?error=update");
+        exit;
+    }
+
+    $stmt->close();
+    header("Location: ../php_front/profilo.php?success=1");
+} else {
+    // Nessun file caricato, reindirizza semplicemente al profilo
+    header("Location: ../php_front/profilo.php");
 }
+
+$conn->close();
+header("Location: ../php_front/profilo.php?success=1");
+exit;
 ?>
