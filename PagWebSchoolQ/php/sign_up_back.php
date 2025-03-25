@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
-
-// Creazione connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
-
+require_once "connection.php";
 // Ricezione dati dal form
 $nome = trim($_POST['nome']);
 $cognome = trim($_POST['cognome']);
@@ -47,7 +37,10 @@ try {
 
     // Se l'operazione è andata a buon fine, reindirizza al login
     header("Location: ../php_front/log_in.php?success=registered");
+    $stmt->close();
+    $conn->close();
     exit();
+    
 
 } catch (mysqli_sql_exception $e) {
     if ($conn->errno == 1062) { // 1062 = ER_DUP_ENTRY (email duplicata)
@@ -59,8 +52,7 @@ try {
 }
 
 // Chiudi connessioni
-$stmt->close();
-$conn->close();
+
 
 
 

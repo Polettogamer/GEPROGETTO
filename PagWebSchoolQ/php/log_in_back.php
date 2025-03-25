@@ -1,17 +1,7 @@
 <?php
 session_start(); // Avvia la sessione per mantenere l'utente connesso
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
-
-// Creazione connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
-
+require_once "connection.php";
 // Ricezione dati dal form
 $email = trim($_POST['email']);
 $password = $_POST['password'];

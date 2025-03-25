@@ -61,6 +61,9 @@ if (isset($_GET['error'])) {
                             <input class="input-text" type="email" id="email" name="email" placeholder="Email Address" required 
                             autocomplete="email" pattern=".+@iisvittorioveneto\.it" title="Deve essere un'email @iisvittorioveneto.it">
                             
+                            <label for="classe">Classe</label>
+                            <input class="input-text" type="text" id="classe" name="classe" placeholder="Es 1A, 2B ecc... " required >
+
                             <label for="password">Password</label>
                             <input class="input-pass" type="password" id="password" name="password" placeholder="Password" required 
                                 minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
