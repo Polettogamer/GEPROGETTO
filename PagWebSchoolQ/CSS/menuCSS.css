@@ -12,10 +12,7 @@
     }
     .nav-container {
       display: flex;
-      align-items: center;
-    }
-    }
-    
+      align-items: center;    
       max-height: 50px;
     }
     
