@@ -148,8 +148,8 @@ if (!$result) {
       <div class="footer-section">
         <h4>Informazioni</h4>
         <ul>
-          <li><a href="chi-siamo.html">Chi Siamo</a></li>
-          <li><a href="guida.html">Come Funziona</a></li>
+          <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
+          <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
