@@ -1,18 +1,7 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "schoolq";
+require_once "../php/connection.php";
 
-// 1. Creazione connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
-
-$conn->set_charset("utf8mb4");
 
 // 2. Query per ottenere le domande
 $sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome
@@ -60,17 +49,11 @@ if (!$result) {
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
         <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
       </div>
-      <div class="right-group">
-        <ul class="nav-links">
-          <li><a href="dashboard.php">Home</a></li>
-          <li><a href="profilo.php">Profilo</a></li>
-          <li><a href="logout.php" class="button">Logout</a></li>
-          <li><a href="nuova_domanda.php" class="button new-question-btn">Nuova Domanda</a></li>
-        </ul>
-        <!--<div class="new-question-container">
-          
-        </div>-->
-      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="profilo.php">Profilo</a></li>
+        <li><a href="../php/log_out.php" class="button">Logout</a></li>
+      </ul>
     </div>
   </header>
   
@@ -162,8 +145,8 @@ if (!$result) {
       <div class="footer-section">
         <h4>Informazioni</h4>
         <ul>
-          <li><a href="chi-siamo.html">Chi Siamo</a></li>
-          <li><a href="guida.html">Come Funziona</a></li>
+          <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
+          <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>

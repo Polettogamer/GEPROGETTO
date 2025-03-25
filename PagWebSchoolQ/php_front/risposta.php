@@ -2,19 +2,8 @@
   session_start();
     $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
   
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schoolq";
-    
-    // Creazione connessione
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    require_once "../php/connection.php";
 
-    if ($conn->connect_error) {
-        die("Connessione fallita: " . $conn->connect_error);
-    }
-    
-    $conn->set_charset("utf8mb4");
 
     // Prepared statement per le risposte
     $stmt = $conn->prepare("SELECT r.*, u.nome, u.cognome FROM risposte r
@@ -91,7 +80,7 @@
       <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
         <li><a href="profilo.php">Profilo</a></li>
-        <li><a href="../index.html" class="button">Logout</a></li>
+        <li><a href="../php/log_out.php" class="button">Logout</a></li>      
       </ul>
     </div>
   </header>
@@ -193,8 +182,8 @@
       <div class="footer-section">
         <h4>Informazioni</h4>
         <ul>
-          <li><a href="chi-siamo.html">Chi Siamo</a></li>
-          <li><a href="guida.html">Come Funziona</a></li>
+          <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
+          <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
