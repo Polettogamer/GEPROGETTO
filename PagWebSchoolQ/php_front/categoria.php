@@ -17,6 +17,7 @@
 
    
     
+    
     if (!$result) {
         die("Errore nella query: " . $conn->error);
     }
