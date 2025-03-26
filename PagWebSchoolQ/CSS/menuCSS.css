@@ -32,10 +32,7 @@
       align-items: center;
     }
     
-    .nav-container .logo img {
-      max-height: 50px;
-      margin-right: 1200px;
-    }
+    
     .new-question-container {
       position: absolute;
       top: 100px; /* Regola la distanza dall'alto */
@@ -46,7 +43,7 @@
       display: flex;   
       justify-content: flex-end; 
       list-style: none;
-      margin: 0;
+      margin: 0, 0, 0, auto;
       padding: 0;
     }
 
@@ -312,4 +309,32 @@
   }
   
 
-  
+      #form {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      margin-top: 15px;
+      /*max-width: 600px; */
+      width: 100%; /* Si adatta alla dimensione del contenitore */
+      box-sizing: border-box; /* Evita che il padding faccia sforare il contenuto */
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      box-sizing: border-box; /* Assicura che il padding non faccia sforare l'elemento */
+    }
+
+    button.response-button {
+      align-self: flex-end;
+    }
