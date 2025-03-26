@@ -80,7 +80,7 @@
       <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
         <li><a href="profilo.php">Profilo</a></li>
-        <li><a href="../php/log_out.php" class="button">Logout</a></li>      
+        <li><a href="../php/log_out.php" class="button">Logout</a></li>
       </ul>
     </div>
   </header>
@@ -143,7 +143,7 @@
                 <textarea id="risposta" name="risposta" rows="8" required></textarea>
                 <input type="hidden" id="QuestionID" name="QuestionID" value="<?=$iddomanda?>" readonly>
               </div>
-              <br>
+                <br>
               <button type="submit" class="response-button">Invia Risposta</button>
             </form>
             <br>
@@ -183,8 +183,8 @@
       <div class="footer-section">
         <h4>Informazioni</h4>
         <ul>
-          <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
-          <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
+        <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
+        <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>

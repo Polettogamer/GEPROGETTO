@@ -16,14 +16,14 @@
                         <div class="center-text">
                             <h1 class="h1">Bentornato</h1>
                             <h2 class="h2">Chatta con altri studenti</h2>
-                        </div>
+                        </div>  
                         <!--eagergarg
                         <div class="semi-footer">
                             <hr>
                             <a href="#">www.SchoolQ.com</a>
                         </div>
                     -->
-                    </div>
+                    </div> 
         
                     <div class="login-container-right">
                         
