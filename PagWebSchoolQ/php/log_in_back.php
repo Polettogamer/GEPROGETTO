@@ -7,7 +7,7 @@ $email = trim($_POST['email']);
 $password = $_POST['password'];
 
 // Query per ottenere la password hashata dell'utente
-$sql = "SELECT userID, nome, cognome, password FROM utenti WHERE email = ?";
+$sql = "SELECT userID, nome, cognome, password, privilegio FROM utenti WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -15,7 +15,7 @@ $stmt->store_result();
 
 // Controllo se l'utente esiste
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id, $nome, $cognome, $hashed_password);
+    $stmt->bind_result($id, $nome, $cognome, $hashed_password, $privilegio);
     $stmt->fetch();
 
     // Verifica della password
@@ -25,6 +25,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['nome'] = $nome;
         $_SESSION['cognome'] = $cognome;
         $_SESSION['email'] = $email;
+        $_SESSION['privilegio'] = $privilegio;
 
         header("Location: ../php_front/dashboard.php?"); // Reindirizza alla pagina principale
         exit();

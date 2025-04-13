@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+    // Funzione per mostrare/nascondere la sidebar (menu a tendina)
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var mainContent = document.getElementById("main-content");
+      if (sidebar.classList.contains("active")) {
+        sidebar.classList.remove("active");
+        mainContent.classList.remove("shifted");
+      } else {
+        sidebar.classList.add("active");
+        mainContent.classList.add("shifted");
+      }
+    }
+</script>
+<header class="top-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="profilo.php">Profilo</a></li>
+        <li><a href="../php/log_out.php" class="button">Logout</a></li>
+      </ul>
+    </div>
+</header>
+<div id="sidebar" class="sidebar">
+    <h3>Materie</h3>
+    <ul>
+      <li><a href="categoria.php?id=1">Italiano</a></li>
+      <li><a href="categoria.php?id=2">Storia</a></li>
+      <li><a href="categoria.php?id=3">Geografia</a></li>
+      <li><a href="categoria.php?id=4">Diritto ed economia</a></li>
+      <li><a href="categoria.php?id=5">Matematica</a></li>
+      <li><a href="categoria.php?id=6">Fisica</a></li>
+      <li><a href="categoria.php?id=7">Chimica</a></li>
+      <li><a href="categoria.php?id=8">Scienze della terra</a></li>
+      <li><a href="categoria.php?id=9">Tecnologie Informatiche</a></li>
+      <li><a href="categoria.php?id=10">TRG</a></li>
+      <li><a href="categoria.php?id=11">Educazione fisica</a></li>
+      <li><a href="categoria.php?id=12">Scienze e tecnologie applicate</a></li>
+      <li><a><b>Indirizzo Informatica:</b></a></li>
+      <li><a href="categoria.php?id=13"> Informatica</a></li>
+      <li><a href="categoria.php?id=14"> Sistemi e reti</a></li>
+      <li><a href="categoria.php?id=15"> TPSIT</a></li>
+      <li><a href="categoria.php?id=16"> Telecomunicazioni</a></li>
+      <li><a href="categoria.php?id=17"> GEPRO</a></li>
+      <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
+      <li><a href="categoria.php?id=18"> Elettrotecnica</a></li>
+      <li><a href="categoria.php?id=19"> Sistemi</a></li>
+      <li><a href="categoria.php?id=20"> TPSEE</a></li>
+      <li><a> ... </a></li>
+    </ul>
+</div>

@@ -31,18 +31,8 @@ $conn->close();
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php require_once "../libs/navbar.html";?>
 
-<header class="top-navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="./dashboard.php">Home</a></li>
-      <li><a href="../php/log_out.php" class="button">Logout</a></li>
-    </ul>
-  </div>
-</header>
 
 <div id="main-content" class="main-content">
   <div class="profile-container">
@@ -99,29 +89,7 @@ $conn->close();
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h4>Informazioni</h4>
-      <ul>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="guida.html">Come Funziona</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Legale</h4>
-      <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="termini.html">Termini e Condizioni</a></li>
-        <li><a href="regolamento.html">Regolamento</a></li>
-      </ul>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
-    </div>
-  </div>
-</footer>
+<?php require_once "../libs/footer.html";?>
 
 <script>
   document.getElementById('profileImageInput').addEventListener('change', function(event) {
