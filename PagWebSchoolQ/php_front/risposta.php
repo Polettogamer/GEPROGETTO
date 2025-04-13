@@ -3,7 +3,11 @@
     $iddomanda = isset($_GET['id']) ? intval($_GET['id']) : 0;
   
     require_once "../php/connection.php";
-
+    // Verifica se l'utente è loggato
+    if (!isset($_SESSION["userID"])) {
+      header("Location: ../index.html"); // Redirect alla login se non autenticato
+      exit;
+    }
 
     // Prepared statement per le risposte
     $stmt = $conn->prepare("SELECT r.*, u.nome, u.cognome FROM risposte r
@@ -40,18 +44,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   
   <script>
-    // Funzione per mostrare/nascondere il sidebar (menu a tendina)
-    function toggleSidebar() {
-      var sidebar = document.getElementById("sidebar");
-      var mainContent = document.getElementById("main-content");
-      if (sidebar.classList.contains("active")) {
-        sidebar.classList.remove("active");
-        mainContent.classList.remove("shifted");
-      } else {
-        sidebar.classList.add("active");
-        mainContent.classList.add("shifted");
-      }
-    }
+    
     function toggleNewAnswer() {
       var formdiv = document.getElementById("form");
 
@@ -70,50 +63,8 @@
   </script>
 </head>
 <body>
-  <!-- TOP NAVBAR -->
-  <header class="top-navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
-        <img src="../Immagini/mondo01.png" alt="SchoolQ Logo">
-      </div>
-      <ul class="nav-links">
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a href="../php/log_out.php" class="button">Logout</a></li>
-      </ul>
-    </div>
-  </header>
+<?php require_once "../libs/navbar.html";?>
   
-  <!-- SIDEBAR: MENU A TENDINA CON LE MATERIE -->
-  <div id="sidebar" class="sidebar">
-    <h3>Materie</h3>
-    <ul>
-      <li><a href="categoria.php?id=1">Italiano</a></li>
-      <li><a href="categoria.php?id=2">Storia</a></li>
-      <li><a href="categoria.php?id=3">Geografia</a></li>
-      <li><a href="categoria.php?id=4">Diritto ed economia</a></li>
-      <li><a href="categoria.php?id=5">Matematica</a></li>
-      <li><a href="categoria.php?id=6">Fisica</a></li>
-      <li><a href="categoria.php?id=7">Chimica</a></li>
-      <li><a href="categoria.php?id=8">Scienze della terra</a></li>
-      <li><a href="categoria.php?id=9">Tecnologie Informatiche</a></li>
-      <li><a href="categoria.php?id=10">TRG</a></li>
-      <li><a href="categoria.php?id=11">Educazione fisica</a></li>
-      <li><a href="categoria.php?id=12">Scienze e tecnologie applicate</a></li>
-      <li><a><b>Indirizzo Informatica:</b></a></li>
-      <li><a href="categoria.php?id=13"> Informatica</a></li>
-      <li><a href="categoria.php?id=14"> Sistemi e reti</a></li>
-      <li><a href="categoria.php?id=15"> TPSIT</a></li>
-      <li><a href="categoria.php?id=16"> Telecomunicazioni</a></li>
-      <li><a href="categoria.php?id=17"> GEPRO</a></li>
-      <li><a><b>Indirizzo Elettrotecnica:</b></a></li>
-      <li><a href="categoria.php?id=18"> Elettrotecnica</a></li>
-      <li><a href="categoria.php?id=19"> Sistemi</a></li>
-      <li><a href="categoria.php?id=20"> TPSEE</a></li>
-      <li><a> ... </a></li>
-    </ul>
-  </div>
   
   <div id="main-content" class="main-content">
     <div id="domanda" class="domanda">
@@ -143,7 +94,6 @@
                 <textarea id="risposta" name="risposta" rows="8" required></textarea>
                 <input type="hidden" id="QuestionID" name="QuestionID" value="<?=$iddomanda?>" readonly>
               </div>
-                <br>
               <button type="submit" class="response-button">Invia Risposta</button>
             </form>
             <br>
@@ -178,44 +128,8 @@
     </div>
   </div>
   
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h4>Informazioni</h4>
-        <ul>
-        <li><a href="../fileFooter/chisiamo.html">Chi Siamo</a></li>
-        <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Legale</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="termini.html">Termini e Condizioni</a></li>
-          <li><a href="regolamento.html">Regolamento</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Contatti</h4>
-        <ul>
-          <li><a href="contact.html">Contattaci</a></li>
-          <li><a href="supporto.html">Supporto</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Seguici</h4>
-        <ul>
-          <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
-          <li><a href="https://twitter.com/tuoforum" target="_blank">Twitter</a></li>
-          <li><a href="https://instagram.com/tuoforum" target="_blank">Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
-      </div>
-    </div>
-  </footer>
+  <?php require_once "../libs/footer.html";?>
+
 </body>
 </html>
     
