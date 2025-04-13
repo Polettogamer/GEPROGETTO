@@ -4,6 +4,7 @@
     <head>
         <script src="JS/javascript.js"></script>
         <link rel="stylesheet" href="CSS/styleCSS.css">
+        <meta charset="utf8">
 
         <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
         <title>SchoolQ</title>
@@ -60,44 +61,14 @@
                 </ul>
             </section>
         </main>
-        <footer class="footer">
-            <div class="footer-container">
-              <div class="footer-section">
-                <h4>Informazioni</h4>
-                <ul>
-                  <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                  <li><a href="guida.html">Come Funziona</a></li>
-                  <li><a href="faq.html">FAQ</a></li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h4>Legale</h4>
-                <ul>
-                  <li><a href="privacy.html">Privacy Policy</a></li>
-                  <li><a href="termini.html">Termini e Condizioni</a></li>
-                  <li><a href="regolamento.html">Regolamento</a></li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h4>Contatti</h4>
-                <ul>
-                  <li><a href="contact.html">Contattaci</a></li>
-                  <li><a href="supporto.html">Supporto</a></li>
-                </ul>
-              </div>
-              <div class="footer-section social">
-                <h4>Seguici</h4>
-                <ul>
-                  <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
-                  <li><a href="https://twitter.com/tuoforum" target="_blank">Twitter</a></li>
-                  <li><a href="https://instagram.com/tuoforum" target="_blank">Instagram</a></li>
-                </ul>
-              </div>
-              <div class="footer-bottom">
-                <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
-              </div>
-            </div>
-          </footer>
+        <div id="footer"></div>
+        <script>
+          fetch("libs/footer.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("footer").innerHTML = data;
+            });
+        </script>
     </body>
 </html>
 
