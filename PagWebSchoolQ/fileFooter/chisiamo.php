@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -10,19 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- TOP NAVBAR -->
-  <header class="top-navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <a href="dashboard.php"><img src="../Immagini/mondo01.png" alt="SchoolQ Logo"></a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="dashboard.php">Home</a></li>
-        <li><a href="profilo.php">Profilo</a></li>
-        <li><a href="logout.php" class="button">Logout</a></li>
-      </ul>
-    </div>
-  </header>
+  <?php 
+  require_once "../libs.navbar.html";
+  ?>
   
   <!-- MAIN CONTENT -->
   <div class="main-content">
