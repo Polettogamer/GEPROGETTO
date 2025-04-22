@@ -3,7 +3,7 @@
 <html>
     <head>
         <script src="JS/javascript.js"></script>
-        <link rel="stylesheet" href="CSS/styleCSS.css">
+        <link rel="stylesheet" href="../CSS/styleCSS.css">
         <meta charset="utf8">
 
         <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
@@ -15,11 +15,11 @@
         <header>
             <nav class="fixed-menu">
                 <ul>
-                    <li><img src="Immagini/mondo01.png" style="max-height: 45px"></li>
+                    <li><img src="../Immagini/mondo01.png" style="max-height: 45px"></li>
                     <li><a href="#parte2">Caratteristiche</a></li>
                     <li><a href="#parte3">Chi Siamo</a></li>
                     <li><a href="#parte4">Contatti</a></li>
-                    <li><a href="./php_front/log_in.php" class="button">Accedi</a></li>
+                    <li><a href="../php_front/log_in.php" class="button">Accedi</a></li>
                 </ul>
             </nav>
         </header>
@@ -39,7 +39,7 @@
                             <br>Imparare insieme è più semplice e motivante. Con SchoolQ, la tua scuola è anche online.</p>
                         <br>
                         <nav>
-                            <a href="./php_front/sign_up.php" class="button">Registrati</a>
+                            <a href="../php_front/sign_up.php" class="button">Registrati</a>
                         </nav>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
         </main>
         <div id="footer"></div>
         <script>
-          fetch("libs/footer.html")
+          fetch("../libs/footer.html")
             .then(response => response.text())
             .then(data => {
               document.getElementById("footer").innerHTML = data;
