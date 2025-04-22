@@ -24,9 +24,17 @@
                         </div>
                     -->
                     </div> 
-        
+
                     <div class="login-container-right">
-                        
+                         <?php
+                        if (isset($_GET['error'])) {
+                            if ($_GET['error'] === 'wrong_password') {
+                                echo "<p style='font-weight: bold; text-align: center;'>⚠️ Password Errata!</p>";
+                            } elseif ($_GET['error'] === 'email_not_found') {
+                                echo "<p style='font-weight: bold; text-align: center;'> ⚠️ Email non trovata.</p>";
+                            }
+                        }
+                        ?>
                     <h3 class="h3">Accedi</h3>
                         <form action="../php/log_in_back.php" method="post" class="input-container">
                             <label for="email">Email</label>
