@@ -18,7 +18,7 @@
     $result = $stmt->get_result();
 
     // Prepared statement per la domanda
-    $stmt_domanda = $conn->prepare("SELECT d.*, u.nome, u.cognome, c.nome AS nomecat FROM domande d 
+    $stmt_domanda = $conn->prepare("SELECT d.*, u.userID, u.nome, u.cognome, c.nome AS nomecat FROM domande d 
                                     JOIN utenti u ON d.userID = u.userID
                                     JOIN categorie c ON c.IDCategoria = d.categoriaID
                                     WHERE QuestionID = ?");
@@ -32,6 +32,12 @@
     if ($domanda->num_rows > 0) {
       $question = $domanda->fetch_assoc();
     }
+    if($question["userID"] == $_SESSION["userID"] || $_SESSION["privilegio"] == 'MODER' || $_SESSION["privilegio"] == 'ADMIN'){
+      $impdelete = "";
+    }else{
+      $impdelete = 'style="display:none"';
+    }
+
     $conn->close();
 ?>
 <!DOCTYPE html>
@@ -45,6 +51,8 @@
   
   <script>
     
+
+
     function toggleNewAnswer() {
       var formdiv = document.getElementById("form");
 
@@ -81,8 +89,11 @@
         <div class="question-footer">
         <button onclick="toggleNewAnswer()" class="response-button">Nuova Risposta </button>
           <div class="question-stats">
-            <span>Risposte: 4</span>
+            <span>Risposte: 2</span>
             <span>Likes:<?=htmlspecialchars($question["nLike"])?></span>
+            <div class="delete">
+              <a href="../php/deleteQ.php?id=<?=$iddomanda?> " <?php echo $impdelete;?> >ELIMINA DOMANDA</a>
+            </div>
           </div>
         </div>
         <div id="form" style="display:none" class="hidden">
