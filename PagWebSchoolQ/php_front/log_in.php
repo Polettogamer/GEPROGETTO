@@ -16,7 +16,6 @@
                         <div class="center-text">
                             <h1 class="h1">Bentornato</h1>
                             <h2 class="h2">Chatta con altri studenti</h2>
-<<<<<<< Updated upstream
                         </div>  
                         <!--eagergarg
                         <div class="semi-footer">
@@ -25,21 +24,17 @@
                         </div>
                     -->
                     </div> 
-=======
-                        </div>
-                    </div>
->>>>>>> Stashed changes
-        
+
                     <div class="login-container-right">
-                    <?php
+                         <?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error'] === 'wrong_password') {
                                 echo "<p style='font-weight: bold; text-align: center;'>⚠️ Password Errata!</p>";
                             } elseif ($_GET['error'] === 'email_not_found') {
-                                echo "<p style='font-weight: bold; text-align: center;'>Email non trovata.</p>";
+                                echo "<p style='font-weight: bold; text-align: center;'> ⚠️ Email non trovata.</p>";
                             }
                         }
-                    ?>
+                        ?>
                     <h3 class="h3">Accedi</h3>
                         <form action="../php/log_in_back.php" method="post" class="input-container">
                             <label for="email">Email</label>
