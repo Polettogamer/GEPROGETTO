@@ -64,6 +64,8 @@ p, ul {
 /* Hero Section */
 .parte1 {
     height: 130vh;
+    width: 100%;
+    max-width:  130vh;
     display: flex;
     align-items: center;
     justify-content: center;
