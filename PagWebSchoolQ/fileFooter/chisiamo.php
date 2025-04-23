@@ -1,7 +1,8 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -13,8 +14,8 @@ session_start();
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <?php 
-  require_once "../libs.navbar.html";
+<?php 
+    require_once "../libs/navbar.html";
   ?>
   
   <!-- MAIN CONTENT -->
@@ -28,44 +29,8 @@ session_start();
     </div>
   </div>
   
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h4>Informazioni</h4>
-        <ul>
-          <li><a href="chisiamo.html">Chi Siamo</a></li>
-          <li><a href="../fileFooter/comefunziona.html">Come Funziona</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Legale</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="termini.html">Termini e Condizioni</a></li>
-          <li><a href="regolamento.html">Regolamento</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Contatti</h4>
-        <ul>
-          <li><a href="contact.html">Contattaci</a></li>
-          <li><a href="supporto.html">Supporto</a></li>
-        </ul>
-      </div>
-      <div class="footer-section social">
-        <h4>Seguici</h4>
-        <ul>
-          <li><a href="https://facebook.com/tuoforum" target="_blank">Facebook</a></li>
-          <li><a href="https://twitter.com/tuoforum" target="_blank">Twitter</a></li>
-          <li><a href="https://instagram.com/tuoforum" target="_blank">Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 SchoolQ. Tutti i diritti riservati.</p>
-      </div>
-    </div>
-  </footer>
+  <?php 
+    require_once "../libs/footer.html";
+  ?>
 </body>
 </html>
