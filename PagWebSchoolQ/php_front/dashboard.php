@@ -23,7 +23,7 @@ if (!$result) {
 
 <!DOCTYPE html>
 <html lang="it">
-
+  <?php require_once "../libs/head.html";?>
 <body>
   <?php require_once "../libs/navbar.html";?>
 
