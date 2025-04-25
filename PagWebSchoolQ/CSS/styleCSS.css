@@ -65,7 +65,7 @@ p, ul {
 .parte1 {
     height: 130vh;
     width: 100%;
-    
+    padding-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
