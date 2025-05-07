@@ -15,6 +15,17 @@ $dbname = 'schoolq'; // Nome del database
 $username = 'root'; // Username del database
 $password = ''; // Password del database (lascia vuoto se non c'è)
 
+?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domande Utente</title>
+    <link rel="stylesheet" href="../CSS/domandeUtenteCSS.css"> <!-- Link al file CSS -->
+</head>
+<body>
+<?php
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -37,20 +48,33 @@ try {
 
     // Mostra le domande dell'utente
     echo "<h1>Domande dell'Utente</h1>";
-    echo "<table border='1' cellpadding='10'>";
-    echo "<tr><th>ID Domanda</th><th>Data Pubblicazione</th><th>Testo Domanda</th><th>Like</th></tr>";
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['questionID']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['dataPubbl']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['QuestionText']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['nLike']) . "</td>";
-        echo "</tr>";
+    if ($stmt->rowCount() > 0) {
+        echo "<table>";
+        echo "<tr><th>ID Domanda</th><th>Data Pubblicazione</th><th>Testo Domanda</th><th>Like</th></tr>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['questionID']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['dataPubbl']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['QuestionText']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['nLike']) . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "<p class='center'>L'utente deve ancora fare una domanda.</p>";
     }
 
-    echo "</table>";
+    // Aggiungi i bottoni per tornare alla lista utenti e alla home
+    echo "<div class='center' style='margin-top: 20px;'>";
+    echo "<a href='utentiLista.php' class='button' style='margin-right: 10px;'>Torna alla Lista Utenti</a>";
+    echo "<a href='../php_front/dashboard.php' class='button' style='margin-left: 10px;'>Torna alla Home</a>";
+    echo "</div>";
 } catch (Exception $e) {
     echo "Errore: " . $e->getMessage();
 }
 ?>
+</body>
+</html>

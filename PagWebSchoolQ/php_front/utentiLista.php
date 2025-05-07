@@ -1,4 +1,5 @@
 <?php
+// filepath: d:\Users\zeno.buogo\Desktop\xampp\htdocs\Github\GEPROGETTO\PagWebSchoolQ\php_front\utentiLista.php
 session_start();
 
 // Verifica se l'utente è loggato
@@ -10,6 +11,17 @@ if (!isset($_SESSION["userID"])) {
 // Configurazione della connessione al database
 require_once "../php/connection.php";
 
+?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Utenti</title>
+    <link rel="stylesheet" href="../CSS/utentiListaCSS.css"> <!-- Link al file CSS -->
+</head>
+<body>
+<?php
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,7 +33,7 @@ try {
 
     // Mostra la lista degli utenti
     echo "<h1>Lista Utenti</h1>";
-    echo "<table border='1' cellpadding='10'>";
+    echo "<table>";
     echo "<tr><th>Nome</th><th>Cognome</th><th>Email</th><th>Azioni</th></tr>";
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -34,7 +46,14 @@ try {
     }
 
     echo "</table>";
+
+    // Aggiungi il tasto per tornare alla home
+    echo "<div class='center'>";
+    echo "<a href='../php_front/dashboard.php' class='button'>Torna alla Home</a>";
+    echo "</div>";
 } catch (Exception $e) {
     echo "Errore: " . $e->getMessage();
 }
 ?>
+</body>
+</html>
