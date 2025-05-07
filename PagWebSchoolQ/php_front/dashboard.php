@@ -4,7 +4,7 @@ require_once "../php/connection.php";
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION["userID"])) {
-  header("Location: ../index.html"); // Redirect alla login se non autenticato
+  header("Location: ../index.php"); // Redirect alla login se non autenticato
   exit;
 }
 // 2. Query per ottenere le domande
@@ -23,15 +23,7 @@ if (!$result) {
 
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <title>Home - SchoolQ</title>
-  <link rel="stylesheet" href="../CSS/menuCSS.css">
-  <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
-  
-</head>
+  <?php require_once "../libs/head.html";?>
 <body>
   <?php require_once "../libs/navbar.html";?>
 

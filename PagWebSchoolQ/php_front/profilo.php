@@ -3,7 +3,7 @@ session_start();
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION["userID"])) {
-    header("Location: ../index.html"); // Redirect alla login se non autenticato
+    header("Location: ../index.php"); // Redirect alla login se non autenticato
     exit;
 }
 

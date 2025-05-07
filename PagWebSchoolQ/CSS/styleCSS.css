@@ -63,7 +63,9 @@ p, ul {
 
 /* Hero Section */
 .parte1 {
-    height: 100vh;
+    height: 130vh;
+    width: 100%;
+    padding-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +106,7 @@ section {
     padding: 60px 20px;
     text-align: center;
     margin: 40px auto;
-    max-width: 1200px;
+    max-width: 1600px;
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
