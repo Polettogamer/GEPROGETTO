@@ -1,0 +1,240 @@
+/* Font e base */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+p, ul {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Navbar */
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #333;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.fixed-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixed-menu ul li {
+    margin: 0 20px;
+}
+
+.fixed-menu ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+}
+
+.fixed-menu ul li a:hover {
+    background-color: #0077ff;
+    color: white;
+    border-color: #0077ff;
+}
+
+/* Hero Section */
+.parte1 {
+    height: 130vh;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0077ff, #00bfa6);
+    color: white;
+    padding: 0 20px;
+}
+
+.parte1 h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.parte1 p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.parte1 .button {
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color: #ffffff;
+    color: #0077ff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.parte1 .button:hover {
+    background-color: #0077ff;
+    color: white;
+}
+
+/* Sezioni */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 1600px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section ul li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Footer */
+/* Stili generali per il footer */
+.footer {
+    background-color: #0077ff; /* Colore di sfondo coerente con la sidebar e altri elementi */
+    color: #fff;               /* Testo in bianco per un buon contrasto */
+    padding: 40px 20px;        /* Spazio interno per dare respiro alle sezioni */
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Contenitore principale del footer */
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;           /* Permette il wrapping su schermi più piccoli */
+    justify-content: space-between; /* Distribuisce uniformemente le sezioni */
+  }
+  
+  /* Stili per ogni sezione del footer */
+  .footer-section {
+    flex: 1;
+    min-width: 200px;          /* Impedisce che le sezioni diventino troppo strette su schermi piccoli */
+    margin-bottom: 20px;
+  }
+  
+  /* Titoli delle sezioni */
+  .footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff; /* Linea sotto il titolo per separare visivamente */
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  /* Lista all'interno di ogni sezione */
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Link all'interno delle liste */
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e0e0e0;
+  }
+  
+  /* Sezione "Seguici" per i social media */
+  .footer-section.social ul {
+    display: flex;
+    gap: 10px; /* Spazio tra le icone/link dei social */
+  }
+  
+  .footer-section.social ul li {
+    margin-bottom: 0;
+  }
+  
+  /* Footer bottom: riga di copyright */
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+/* Pulsanti globali */
+.button {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #0099ff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0077ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fixed-menu ul {
+        flex-direction: column;
+    }
+
+    .fixed-menu ul li {
+        margin: 10px 0;
+    }
+
+    .parte1 h1 {
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 40px 10px;
+    }
+}
