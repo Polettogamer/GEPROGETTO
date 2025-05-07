@@ -1,11 +1,31 @@
 <?php
 require_once "connection.php";
 // Ricezione dati dal form
-$nome = trim($_POST['nome']);
-$cognome = trim($_POST['cognome']);
+//$nome = trim($_POST['nome']);
+//$cognome = trim($_POST['cognome']);
 $email = trim($_POST['email']);
 $password = $_POST['password'];
 
+
+// Estrazione parte locale e dominio
+list($localPart, $domain) = explode('@', $email);
+
+// Inizializzo nome e cognome
+$nome     = '';
+$cognome  = '';
+
+// Se il dominio è quello atteso e nella parte locale c’è un punto
+if ($domain === 'iisvittorioveneto.it' && strpos($localPart, '.') !== false) {
+    // Divido la parte locale in due (nome e cognome)
+    list($first, $last) = explode('.', $localPart);
+    // Normalizzo tutto in minuscolo e poi metto in maiuscolo la prima lettera
+    $nome     = ucfirst(strtolower($first));
+    $cognome  = ucfirst(strtolower($last));
+} else {
+    // Qui puoi gestire il caso di formato non valido (es. mostrare errore)
+    header("Location: ../php_front/sign_up.php?error=invalid_email_format");
+    exit();
+}
 
 
 // Controllo se l'email esiste già nel database
