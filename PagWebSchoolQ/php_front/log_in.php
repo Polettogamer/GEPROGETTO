@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Accedi</title>
         <link rel="stylesheet" href="../CSS/accediCSS.css">
-        <link rel="icon" type="image/x-icon" href="Immagini/faviconf.png">
+        <link rel="icon" type="image/x-icon" href="../Immagini/faviconf.png">
     </head>
     <body>
         <main class="main">

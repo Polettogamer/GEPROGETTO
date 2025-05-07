@@ -50,19 +50,11 @@ if (isset($_GET['error'])) {
                             </div>
                         <?php endif; ?>
 
-                        <form action="../php/sign_up_back.php" method="post" class="input-container">
-                            <label for="nome">Nome</label>
-                            <input class="input-text" type="text" id="nome" name="nome" placeholder="Nome" required autocomplete="given-name">
-                            
-                            <label for="cognome">Cognome</label>
-                            <input class="input-text" type="text" id="cognome" name="cognome" placeholder="Cognome" required autocomplete="family-name">
+                        <form action="../php/autenticate.php" method="post" class="input-container">
                             
                             <label for="email">Email</label>
                             <input class="input-text" type="email" id="email" name="email" placeholder="Email Address" required 
                             autocomplete="email" pattern=".+@iisvittorioveneto\.it" title="Deve essere un'email @iisvittorioveneto.it">
-                            
-                            <label for="classe">Classe</label>
-                            <input class="input-text" type="text" id="classe" name="classe" placeholder="Es 1A, 2B ecc... " required >
 
                             <label for="password">Password</label>
                             <input class="input-pass" type="password" id="password" name="password" placeholder="Password" required 
