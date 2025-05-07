@@ -21,7 +21,7 @@ session_start();
   <!-- MAIN CONTENT -->
   <div class="main-content">
     <div class="chisiamo-container">
-      <h1>Chi Siamo</h1>
+      <h1>Chi Siam</h1>
       <p>SchoolQ è una piattaforma dedicata a studenti e docenti, concepita per rendere l'apprendimento collaborativo più interattivo e accessibile. Qui, ogni domanda trova risposta e ogni discussione stimola la curiosità e l'innovazione.</p>
       <p>Realizzata da un gruppo di studenti dell'ITT Città della Vittoria, la nostra missione è creare uno spazio in cui conoscenza, confronto e supporto reciproco si fondono per favorire la crescita personale e accademica. Attraverso un design moderno, intuitivo e responsive, SchoolQ mette a disposizione una serie di strumenti per condividere idee, risolvere dubbi e approfondire ogni materia.</p>
       <p>Unisciti alla nostra community e scopri come ogni domanda può aprire nuove opportunità di apprendimento!</p>
