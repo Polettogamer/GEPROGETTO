@@ -338,3 +338,25 @@
     button.response-button {
       align-self: flex-end;
     }
+    /* Forza lo stile della navbar */
+  .top-navbar {
+      background-color: #ffffff !important; /* Sfondo bianco */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important; /* Ombra */
+      padding: 10px 0 !important;
+  }
+
+  .nav-links li a {
+      color: #333 !important; /* Colore del testo */
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      padding: 8px 15px !important;
+      border: 2px solid transparent !important;
+      border-radius: 50px !important;
+      transition: all 0.3s ease !important;
+  }
+
+  .nav-links li a:hover {
+      background-color: #0077ff !important; /* Sfondo blu al passaggio del mouse */
+      color: #fff !important; /* Testo bianco */
+      border-color: #0077ff !important;
+  }

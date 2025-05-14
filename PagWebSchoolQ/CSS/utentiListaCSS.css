@@ -94,3 +94,26 @@ table tr:hover {
         padding: 8px 15px;
     }
 }
+
+/* Navbar - Evita conflitti */
+.top-navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    padding: 10px 0 !important;
+}
+
+.nav-links li a {
+    color: #333 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 8px 15px !important;
+    border: 2px solid transparent !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-links li a:hover {
+    background-color: #0077ff !important;
+    color: #fff !important;
+    border-color: #0077ff !important;
+}
