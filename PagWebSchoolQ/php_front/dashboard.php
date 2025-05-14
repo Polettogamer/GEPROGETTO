@@ -8,7 +8,7 @@ if (!isset($_SESSION["userID"])) {
   exit;
 }
 // 2. Query per ottenere le domande
-$sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome
+$sql = "SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome, u.userID
         FROM domande d
         JOIN utenti u ON d.userID = u.userID
         JOIN categorie c ON c.IDCategoria = d.categoriaID
@@ -41,8 +41,18 @@ if (!$result) {
               echo '<div class="question-item">';
               echo   '<div class="question-header">';
               echo     '<h3 class="question-title">' . htmlspecialchars($row["categoria"] ?? "Categoria non disponibile") . '</h3>';
-              echo     '<div class="question-meta">Pubblicato alle ' . ($row["dataPubbl"] ?? "Data non disponibile") . ' - da <strong>' 
+              /*echo     '<div class="question-meta">Pubblicato alle ' . ($row["dataPubbl"] ?? "Data non disponibile") . ' - da <strong>' 
                        . htmlspecialchars(($row['nome'] ?? "Nome non disponibile") . ' ' . ($row['cognome'] ?? "Cognome non disponibile")) . '</strong></div>';
+              */
+              $nome = htmlspecialchars($row['nome'] ?? "Nome");
+              $cognome = htmlspecialchars($row['cognome'] ?? "Cognome");
+              $userID = intval($row['userID'] ?? 0);
+              echo '<div class="question-meta">Pubblicato alle ' . ($row["dataPubbl"] ?? "Data non disponibile") . ' - da <a href="profilo.php?id=' . $userID . '"><strong>'
+              . $nome . ' ' . $cognome . '</strong></a></div>';
+
+
+
+
               echo   '</div>';
 
               echo   '<div class="question-body">';
