@@ -1,0 +1,76 @@
+/* Font e base */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Contenitore principale */
+.supporto-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titolo principale */
+.supporto-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #0077ff;
+    text-align: center;
+}
+
+/* Sottotitoli */
+.supporto-container h2 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    color: #444;
+}
+
+/* Link */
+.supporto-container a {
+    color: #0077ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.supporto-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .supporto-container {
+        padding: 15px;
+    }
+
+    .supporto-container h1 {
+        font-size: 2rem;
+    }
+
+    .supporto-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .supporto-container p {
+        font-size: 0.9rem;
+    }
+}
