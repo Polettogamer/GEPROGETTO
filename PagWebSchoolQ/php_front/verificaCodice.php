@@ -1,4 +1,9 @@
-<?php 
+<input type="text" name="codice_verifica" id="codice_verifica" required maxlength="6" pattern="\d{6}" placeholder="Inserisci il codice di 6 cifre"><input type="text" name="codice_verifica" id="codice_verifica" required maxlength="6" pattern="\d{6}" placeholder="Inserisci il codice di 6 cifre"><?php
+if (!isset($_SESSION['tmpemail'])) {
+    header("Location: sign_up.php");
+    exit();
+}
+?><?php 
  session_start();
 ?>
 <!DOCTYPE html>
