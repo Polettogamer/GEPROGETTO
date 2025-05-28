@@ -50,7 +50,7 @@ try {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Server SMTP (esempio: Gmail)
         $mail->SMTPAuth = true;
-        $mail->Username = 'schoolq.autenticate.com'; // Inserisci la tua email
+        $mail->Username = 'schoolq.autenticate@gmail.com'; // Inserisci la tua email
         $mail->Password = 'cfzr fkyl inzy wwgq'; // Inserisci la tua password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Crittografia TLS
         $mail->Port = 587; // Porta SMTP
@@ -60,7 +60,7 @@ try {
         $mail->Debugoutput = 'html'; // Formatta il debug in HTML
 
         // Configura il mittente e il destinatario
-        $mail->setFrom('your_email@gmail.com', 'SchoolQ'); // Mittente
+        $mail->setFrom('schoolq.autenticate@gmail.com', 'SchoolQ'); // Mittente
         $mail->addAddress($email); // Destinatario
 
         // Contenuto dell'email
