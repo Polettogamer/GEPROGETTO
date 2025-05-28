@@ -11,6 +11,22 @@ $check_email->bind_param("s", $email);
 $check_email->execute();
 $check_email->store_result();
 
+
+if (!isset($_POST['email'], $_POST['password'])) {
+    header("Location: ../php_front/sign_up.php?error=missing_fields");
+    exit();
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: ../php_front/sign_up.php?error=email_invalid");
+    exit();
+}
+
+if (empty($email) || empty($password)) {
+    header("Location: ../php_front/sign_up.php?error=empty_fields");
+    exit();
+}
+
 if ($check_email->num_rows > 0) {
 
     header("Location: ../php_front/sign_up.php?error=email_exists");
