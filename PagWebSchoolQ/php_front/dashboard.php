@@ -34,6 +34,7 @@ if (!$result) {
 </head>
 <body>
   <?php require_once "../libs/navbar.html";?>
+  
 
   <!-- MAIN CONTENT: DOMANDE PUBBLICATE RECENTEMENTE -->
   <div id="main-content" class="main-content">
@@ -93,4 +94,35 @@ if (!$result) {
   <?php require_once "../libs/footer.html";?>
   
 </body>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("show-instagram");
+    const container = document.getElementById("instagram-list");
+
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Se è già visibile, nasconde
+      if (container.style.display === "block") {
+        container.style.display = "none";
+        container.innerHTML = "";
+        return;
+      }
+
+      // AJAX per caricare i profili
+      fetch("../fileFooter/load_instagram.php")
+        .then(response => response.text())
+        .then(data => {
+          container.innerHTML = "<h4>Profili Instagram</h4>" + data;
+          container.style.display = "block";
+        })
+        .catch(err => {
+          console.error("Errore AJAX:", err);
+          container.innerHTML = "<p>Errore nel caricamento dei profili Instagram.</p>";
+          container.style.display = "block";
+        });
+    });
+  });
+</script>
 </html>
