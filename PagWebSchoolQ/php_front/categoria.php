@@ -6,7 +6,7 @@
 
    // Verifica se l'utente è loggato
 if (!isset($_SESSION["userID"])) {
-  header("Location: ../index.html"); // Redirect alla login se non autenticato
+  header("Location: ../index.php"); // Redirect alla login se non autenticato
   exit;
 }
     $stmt = $conn->prepare("SELECT d.questionID, c.nome AS categoria, d.dataPubbl, d.QuestionText, d.nLike, u.nome, u.cognome, c.descrizione

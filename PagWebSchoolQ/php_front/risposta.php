@@ -5,7 +5,7 @@
     require_once "../php/connection.php";
     // Verifica se l'utente è loggato
     if (!isset($_SESSION["userID"])) {
-      header("Location: ../index.html"); // Redirect alla login se non autenticato
+      header("Location: ../index.php"); // Redirect alla login se non autenticato
       exit;
     }
 
@@ -36,6 +36,11 @@
       $impdelete = "";
     }else{
       $impdelete = 'style="display:none"';
+    }
+    if($question["userID"] == $_SESSION["userID"] || $_SESSION["privilegio"] == 'ADMIN'){
+      $impedit = "";
+    }else{
+      $impedit = 'style="display:none"';
     }
 
     $conn->close();
@@ -93,6 +98,9 @@
             <span>Likes:<?=htmlspecialchars($question["nLike"])?></span>
             <div class="delete">
               <a href="../php/deleteQ.php?id=<?=$iddomanda?> " <?php echo $impdelete;?> >ELIMINA DOMANDA</a>
+            </div>
+            <div class="edit">
+              <a href="modifica_domanda.php?id=<?=$iddomanda?> " <?php echo $impedit;?> >MODIFICA  DOMANDA</a>
             </div>
           </div>
         </div>

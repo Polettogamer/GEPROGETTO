@@ -11,12 +11,12 @@ require_once "connection.php";
 
 try {
     // Prima cancella le risposte
-    $stmt1 = $sql->prepare("DELETE FROM risposte WHERE questionID = ?");
+    $stmt1 = $conn->prepare("DELETE FROM risposte WHERE questionID = ?");
     $stmt1->bind_param("i", $iddomanda);
     $stmt1->execute();
 
     // Poi cancella la domanda
-    $stmt2 = $sql->prepare("DELETE FROM domande WHERE questionID = ?");
+    $stmt2 = $conn->prepare("DELETE FROM domande WHERE questionID = ?");
     $stmt2->bind_param("i", $iddomanda);
     $stmt2->execute();
 

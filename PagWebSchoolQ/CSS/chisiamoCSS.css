@@ -1,0 +1,61 @@
+/* Font e base */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1 {
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    color: #444;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Contenitore principale */
+.chisiamo-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titolo */
+.chisiamo-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #0077ff;
+}
+
+/* Paragrafi */
+.chisiamo-container p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chisiamo-container {
+        padding: 15px;
+    }
+
+    .chisiamo-container h1 {
+        font-size: 2rem;
+    }
+
+    .chisiamo-container p {
+        font-size: 0.9rem;
+    }
+}
