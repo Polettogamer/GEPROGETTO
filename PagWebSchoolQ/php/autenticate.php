@@ -1,8 +1,6 @@
 <?php
 require_once "connection.php";
-require '../vendor/autoload.php'; // Includi PHPMailer (se usi Composer)
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
 
 session_start();
 
@@ -42,42 +40,18 @@ try {
     $codice_verifica = strval(random_int(100000, 999999));
     $_SESSION['codice_verifica'] = $codice_verifica;
 
-    // Configura PHPMailer
-    $mail = new PHPMailer(true);
+    // Componi l'email
+    $to = $email;
+    $subject = "Codice di verifica per la registrazione";
+    $message = "Ciao,\n\nIl tuo codice di verifica è: $codice_verifica\n\nInseriscilo nel form per completare la registrazione.";
+    $headers = "From: schoolq.autenticate@gmail.com\r\n";
 
-    try {
-        // Configurazione del server SMTP
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Server SMTP (esempio: Gmail)
-        $mail->SMTPAuth = true;
-        $mail->Username = 'schoolq.autenticate@gmail.com'; // Inserisci la tua email
-        $mail->Password = 'cfzr fkyl inzy wwgq'; // Inserisci la tua password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Crittografia TLS
-        $mail->Port = 587; // Porta SMTP
-
-        // Mostra i dettagli del processo di invio
-        $mail->SMTPDebug = 2;
-        $mail->Debugoutput = 'html'; // Formatta il debug in HTML
-
-        // Configura il mittente e il destinatario
-        $mail->setFrom('schoolq.autenticate@gmail.com', 'SchoolQ'); // Mittente
-        $mail->addAddress($email); // Destinatario
-
-        // Contenuto dell'email
-        $mail->isHTML(true);
-        $mail->Subject = "Codice di verifica per la registrazione";
-        $mail->Body = "Ciao,<br><br>Il tuo codice di verifica è: <b>$codice_verifica</b><br><br>Inseriscilo nel form per completare la registrazione.";
-
-        // Timeout di 30 secondi
-        $mail->Timeout = 30;
-
-        // Invia l'email
-        $mail->send();
+    // Invia l'email
+    if (mail($to, $subject, $message, $headers)) {
         header("Location: ../php_front/verifica_codice.php");
         exit();
-    } catch (Exception $e) {
-        error_log("Errore nell'invio dell'email: " . $mail->ErrorInfo);
-        header("Location: ../php_front/sign_up.php?error=email_send_failed&message=" . urlencode($mail->ErrorInfo));
+    } else {
+        header("Location: ../php_front/sign_up.php?error=email_send_failed");
         exit();
     }
 } catch (Exception $e) {

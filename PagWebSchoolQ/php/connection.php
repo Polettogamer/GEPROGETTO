@@ -1,9 +1,9 @@
 <?php
 // Configurazione della connessione al database
-$servername = "localhost"; // Cambia se necessario
-$username = "root"; // Il tuo username del database
-$password = ""; // La tua password del database
-$dbname = "schoolq"; // Nome del database
+$servername = "srv1342.hstgr.io"; // Cambia se necessario
+$username = "u482179263_schoolq"; // Il tuo username del database
+$password = "&L]ygs!N94f"; // La tua password del database
+$dbname = "u482179263_schoolq"; // Nome del database
 
 // Creazione della connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
